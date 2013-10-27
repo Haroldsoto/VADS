@@ -1,0 +1,110 @@
+﻿@using System.Collections
+@using Microsoft.Ajax.Utilities
+@using VADS.Models
+@model VADS.Models.VehicleInfoModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>VehicleInfoModel</legend>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VehicleBrand)
+        </div>
+        <div class="editor-field">
+            @*@Html.DropDownList("VehicleBrands", "-Select one-")*@
+            @*@Html.DropDownList("klklklk",ViewBag.VehicleBrands as IEnumerable<SelectListItem>)*@
+            @Html.ValidationMessageFor(model => model.VehicleBrand)
+        </div>
+        
+        @*<script type="text/javascript">
+            function CascadingDDLViewModel() {
+                this.models = ko.observableArray([]);
+            }
+
+            var objVM = new CascadingDDLViewModel();
+            ko.applyBindings(objVM);
+            
+            function FetchModels() {
+                var brandId = $("#ddlBrands").val();
+                $.getJSON("/vehicle/GetStates/" + brandId, null, function (data) {
+                    objVM.models(data);
+                });
+            }
+        </script>*@
+        <p data-bind="visible: models().length > 0">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.VehicleModel)
+            </div>
+            @*<select data-bind="options: models, optionsText: 'Model', optionsValue: 'BrandId', optionsCaption: '-Select one-' "></select>*@
+        </p>
+        
+         
+
+        <div class="editor-field">
+            @*@{
+
+                var db = new VehicleContext();
+                var query = db.VehicleModelses.Select(models => new {models.Model, models.BrandId}).Where(Model.ToString);
+                ViewBag.VehicleModels = new SelectList(query.AsEnumerable(), "Model", "Model");
+
+            }*@
+            @*@Html.DropDownList("VehicleModels", "-Select one-")*@
+            @Html.ValidationMessageFor(model => model.VehicleModel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Year)
+        </div>
+        <div class="editor-field">
+            @{
+                var years = Enumerable.Range(1996, DateTime.Now.Year - 1995)
+                   .ToList()
+                   .OrderByDescending(d => d)
+                   .Select(e => new SelectListItem
+                   {
+                       Text = e.ToStringInvariant(),
+                       Value = e.ToStringInvariant()
+                   });
+            }
+            @*@Html.DropDownListFor(model => model.Year, years, "-Select one-")*@
+            @Html.ValidationMessageFor(model => model.Year)
+        </div>
+
+        <div class="editor-label">  
+            @Html.LabelFor(model => model.Plate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Plate)
+            @Html.ValidationMessageFor(model => model.Plate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OwnerId, "OwnerModel")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OwnerId", "-Select one-")
+            @Html.ValidationMessageFor(model => model.OwnerId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

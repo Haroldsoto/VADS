@@ -1,0 +1,22 @@
+﻿@model VADS.Models.TotoModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TotoModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TotoName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotoName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TotoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

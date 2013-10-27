@@ -1,0 +1,43 @@
+﻿@model VADS.Models.VehicleInfoModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>VehicleInfoModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleBrand)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleBrand)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleModel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleModel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Year)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Year)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OwnerModel.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OwnerModel.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.VehicleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

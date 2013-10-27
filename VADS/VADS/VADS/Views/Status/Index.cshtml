@@ -1,0 +1,126 @@
+﻿@model IEnumerable<VADS.Models.VehicleStatusModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PidDistance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidRuntime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidCoolantTemp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidRpm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidThrottle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidEngineLoad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidAbsEngineLoad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidIntakeTemp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidIntakePressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidMafFlow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidFuelPressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidFuelLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidBarometric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PidTimingAdvance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleInfo.VehicleBrand)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidDistance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidRuntime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidCoolantTemp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidRpm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidThrottle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidEngineLoad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidAbsEngineLoad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidIntakeTemp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidIntakePressure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidMafFlow)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidFuelPressure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidFuelLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidBarometric)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PidTimingAdvance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleInfo.VehicleBrand)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StatusId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StatusId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StatusId })
+        </td>
+    </tr>
+}
+
+</table>

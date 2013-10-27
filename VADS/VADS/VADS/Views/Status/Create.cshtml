@@ -1,0 +1,164 @@
+﻿@model VADS.Models.VehicleStatusModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>VehicleStatusModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Detail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Detail)
+            @Html.ValidationMessageFor(model => model.Detail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidDistance)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidDistance)
+            @Html.ValidationMessageFor(model => model.PidDistance)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidRuntime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidRuntime)
+            @Html.ValidationMessageFor(model => model.PidRuntime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidCoolantTemp)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidCoolantTemp)
+            @Html.ValidationMessageFor(model => model.PidCoolantTemp)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidSpeed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidSpeed)
+            @Html.ValidationMessageFor(model => model.PidSpeed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidRpm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidRpm)
+            @Html.ValidationMessageFor(model => model.PidRpm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidThrottle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidThrottle)
+            @Html.ValidationMessageFor(model => model.PidThrottle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidEngineLoad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidEngineLoad)
+            @Html.ValidationMessageFor(model => model.PidEngineLoad)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidAbsEngineLoad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidAbsEngineLoad)
+            @Html.ValidationMessageFor(model => model.PidAbsEngineLoad)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidIntakeTemp)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidIntakeTemp)
+            @Html.ValidationMessageFor(model => model.PidIntakeTemp)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidIntakePressure)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidIntakePressure)
+            @Html.ValidationMessageFor(model => model.PidIntakePressure)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidMafFlow)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidMafFlow)
+            @Html.ValidationMessageFor(model => model.PidMafFlow)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidFuelPressure)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidFuelPressure)
+            @Html.ValidationMessageFor(model => model.PidFuelPressure)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidFuelLevel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidFuelLevel)
+            @Html.ValidationMessageFor(model => model.PidFuelLevel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidBarometric)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidBarometric)
+            @Html.ValidationMessageFor(model => model.PidBarometric)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PidTimingAdvance)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PidTimingAdvance)
+            @Html.ValidationMessageFor(model => model.PidTimingAdvance)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VehicleId, "VehicleInfo")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VehicleId", String.Empty)
+            @Html.ValidationMessageFor(model => model.VehicleId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

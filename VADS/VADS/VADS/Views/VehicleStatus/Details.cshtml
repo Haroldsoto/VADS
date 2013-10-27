@@ -1,0 +1,43 @@
+﻿@model VADS.Models.VehicleStatusModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>VehicleStatusModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidDistance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidDistance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidRuntime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidRuntime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidCoolantTemp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidCoolantTemp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleInfo.VehicleBrand)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleInfo.VehicleBrand)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.StatusId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

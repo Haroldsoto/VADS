@@ -1,0 +1,134 @@
+﻿@model VADS.Models.VehicleStatusModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>VehicleStatusModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Detail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Detail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidDistance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidDistance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidRuntime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidRuntime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidCoolantTemp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidCoolantTemp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidSpeed)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidSpeed)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidRpm)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidRpm)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidThrottle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidThrottle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidEngineLoad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidEngineLoad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidAbsEngineLoad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidAbsEngineLoad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidIntakeTemp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidIntakeTemp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidIntakePressure)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidIntakePressure)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidMafFlow)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidMafFlow)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidFuelPressure)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidFuelPressure)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidFuelLevel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidFuelLevel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidBarometric)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidBarometric)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PidTimingAdvance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PidTimingAdvance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleInfo.VehicleBrand)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleInfo.VehicleBrand)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.StatusId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

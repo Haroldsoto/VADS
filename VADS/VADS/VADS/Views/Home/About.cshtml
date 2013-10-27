@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <h4>Alcance</h4>
+    <p style="text-align: justify">
+        El alcance del prototipo de nuestro proyecto será 
+        tener el dispositivo que va en el vehículo funcionando 
+        de tal manera que pueda leer los códigos de la computadora 
+        del vehículo e interpretarlos. También incluido en el alcance 
+        esta la parte de TELE-comunicación la cual consiste en enviar
+        un mensaje o un correo o cualquier tipo de notificación al 
+        usuario.
+    </p>
+</article>
+
+<aside>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+</aside>

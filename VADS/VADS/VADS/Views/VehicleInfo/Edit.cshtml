@@ -1,0 +1,62 @@
+﻿@model VADS.Models.VehicleInfoModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>VehicleInfoModel</legend>
+
+        @Html.HiddenFor(model => model.VehicleId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VehicleBrand)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VehicleBrand)
+            @Html.ValidationMessageFor(model => model.VehicleBrand)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VehicleModel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VehicleModel)
+            @Html.ValidationMessageFor(model => model.VehicleModel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Year)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Year)
+            @Html.ValidationMessageFor(model => model.Year)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OwnerId, "OwnerModel")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OwnerId", String.Empty)
+            @Html.ValidationMessageFor(model => model.OwnerId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
