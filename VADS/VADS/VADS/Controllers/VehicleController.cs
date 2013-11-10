@@ -6,10 +6,12 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using VADS.Models;
 
 namespace VADS.Controllers
 {
+    
     public class VehicleController : Controller
     {
         private UsersContext db = new UsersContext();
@@ -51,7 +53,7 @@ namespace VADS.Controllers
             ViewBag.OwnerId = new SelectList(db.OwnerModels, "Id", "Name");
             return View();
         }
-        public ActionResult GetStates(int id)
+        public JsonResult GetStates(int id)
         {
             var modelsList = new SelectList(db.VehicleModelses, "BrandId", "Model").ToList().Where(item => item.Value == id.ToString(CultureInfo.InvariantCulture));
             return this.Json(modelsList, JsonRequestBehavior.AllowGet);

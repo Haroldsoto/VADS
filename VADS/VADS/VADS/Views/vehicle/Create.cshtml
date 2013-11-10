@@ -75,7 +75,7 @@
                        Value = e.ToStringInvariant()
                    });
             }
-            @*@Html.DropDownListFor(model => model.Year, years, "-Select one-")*@
+            @Html.DropDownListFor(model => model.Year, years, "-Select one-")
             @Html.ValidationMessageFor(model => model.Year)
         </div>
 
