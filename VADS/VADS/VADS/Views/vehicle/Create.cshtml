@@ -4,10 +4,11 @@
 @model VADS.Models.VehicleInfoModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Añadir vehículo";
 }
 
-<h2>Create</h2>
+<h2>Añadir vehículo</h2>
+<br/>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -17,11 +18,11 @@
         <legend>VehicleInfoModel</legend>
         
         <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleBrand)
+            @Html.Label("Marca")
         </div>
         <div class="editor-field">
-            @*@Html.DropDownList("VehicleBrands", "-Select one-")*@
-            @*@Html.DropDownList("klklklk",ViewBag.VehicleBrands as IEnumerable<SelectListItem>)*@
+            @Html.DropDownList("VehicleBrands", "-Select one-")
+            @Html.DropDownList("klklklk",ViewBag.VehicleBrands as IEnumerable<SelectListItem>)
             @Html.ValidationMessageFor(model => model.VehicleBrand)
         </div>
         
@@ -42,14 +43,12 @@
         </script>*@
         <p data-bind="visible: models().length > 0">
             <div class="editor-label">
-                @Html.LabelFor(model => model.VehicleModel)
+                @Html.Label("Modelo")
             </div>
             @*<select data-bind="options: models, optionsText: 'Model', optionsValue: 'BrandId', optionsCaption: '-Select one-' "></select>*@
         </p>
         
-         
-
-        <div class="editor-field">
+        <div id="modelos" class="editor-field">
             @*@{
 
                 var db = new VehicleContext();
@@ -57,12 +56,12 @@
                 ViewBag.VehicleModels = new SelectList(query.AsEnumerable(), "Model", "Model");
 
             }*@
-            @*@Html.DropDownList("VehicleModels", "-Select one-")*@
+            @Html.DropDownList("VehicleModels", "-Select one-")
             @Html.ValidationMessageFor(model => model.VehicleModel)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Year)
+            @Html.Label("Año")
         </div>
         <div class="editor-field">
             @{
@@ -75,12 +74,12 @@
                        Value = e.ToStringInvariant()
                    });
             }
-            @Html.DropDownListFor(model => model.Year, years, "-Select one-")
+            @Html.DropDownListFor(model => model.Year, years, "-Seleccione uno-")
             @Html.ValidationMessageFor(model => model.Year)
         </div>
 
         <div class="editor-label">  
-            @Html.LabelFor(model => model.Plate)
+            @Html.Label("Placa")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Plate)
@@ -88,21 +87,21 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.OwnerId, "OwnerModel")
+            @Html.Label("Dueño")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("OwnerId", "-Select one-")
+            @Html.DropDownList("OwnerId", "-Seleccione uno-")
             @Html.ValidationMessageFor(model => model.OwnerId)
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Crear" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Atrás", "Index")
 </div>
 
 @section Scripts {

@@ -81,8 +81,9 @@ namespace VADS.Controllers
                                         PidTimingAdvance = pidTimingAdvance,
                                         Time = DateTime.Now
                                     };
-            //db.VehicleStatusModels.Add(vehicleStatus);
-            //db.SaveChanges();
+
+            db.VehicleStatusModels.Add(vehicleStatus);
+            db.SaveChanges();
             
             if(vehicleStatus.PidRpm > 2000)
             {
