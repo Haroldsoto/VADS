@@ -1,12 +1,12 @@
 ﻿@model VADS.Models.RegisterModel
 @using Recaptcha.Web.Mvc;
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registrarse";
 }
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
+    <h2>Crear una cuenta nueva.</h2>
 </hgroup>
 
 @using (Html.BeginForm()) {
@@ -32,7 +32,7 @@
                 @Html.Recaptcha(theme:Recaptcha.Web.RecaptchaTheme.Clean)
             </li>
         </ol>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Registrarse" />
     </fieldset>
 }
 

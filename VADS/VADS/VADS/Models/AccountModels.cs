@@ -38,7 +38,7 @@ namespace VADS.Models
     public class RegisterExternalLoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
@@ -46,53 +46,53 @@ namespace VADS.Models
 
     public class LocalPasswordModel
     {
-        [Required]
+        [Required(ErrorMessage = "El nombre de usuario es obligatorio.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Contraseña actual")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "La contraseña es obligatoria.")]
+        [StringLength(100, ErrorMessage = "La contraseña {0} al menos debe contener {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Contraseña nueva")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Confirmar contraseña nueva")]
+        [Compare("NewPassword", ErrorMessage = "Las contraseñas no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class LoginModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "El nombre de usuario es obligatorio.")]
+        [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Recordarme")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "El nombre de usuario es obligatorio.")]
+        [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "La contraseña es obligatoria.")]
+        [StringLength(100, ErrorMessage = "La {0} debe contener al menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar contraseña")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
 

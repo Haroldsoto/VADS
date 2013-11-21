@@ -44,7 +44,7 @@ namespace VADS.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            ModelState.AddModelError("", "El nombre de usuario o contraseña es incorrecto.");
             return View(model);
         }
 
@@ -81,7 +81,7 @@ namespace VADS.Controllers
 
             if (String.IsNullOrEmpty(recaptchaHelper.Response))
             {
-                ModelState.AddModelError("", "Captcha answer cannot be empty.");
+                ModelState.AddModelError("", "El Captcha es requerido.");
                 return View(model);
             }
 
@@ -89,7 +89,7 @@ namespace VADS.Controllers
 
             if (recaptchaResult != RecaptchaVerificationResult.Success)
             {
-                ModelState.AddModelError("", "Incorrect captcha answer.");
+                ModelState.AddModelError("", "Captcha incorrecto.");
             }
             if (ModelState.IsValid)
             {
@@ -145,8 +145,8 @@ namespace VADS.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                message == ManageMessageId.ChangePasswordSuccess ? "Tu contraseña ha sido cambiada."
+                : message == ManageMessageId.SetPasswordSuccess ? "Tu contraseña ha sido actualizada."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
@@ -185,7 +185,7 @@ namespace VADS.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                        ModelState.AddModelError("", "La contraseña actual es incorrecta o la contraseña nueva es inválida.");
                     }
                 }
             }
@@ -208,7 +208,7 @@ namespace VADS.Controllers
                     }
                     catch (Exception)
                     {
-                        ModelState.AddModelError("", String.Format("Unable to create local account. An account with the name \"{0}\" may already exist.", User.Identity.Name));
+                        ModelState.AddModelError("", String.Format("No se pudo crear una cuenta. Es posible que una cuenta con el nombre \"{0}\" ya exista.", User.Identity.Name));
                     }
                 }
             }
@@ -297,7 +297,7 @@ namespace VADS.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("UserName", "User name already exists. Please enter a different user name.");
+                        ModelState.AddModelError("UserName", "Nombre de usuario ya existe. Por favor ingresa un nombre de usuario diferente.");
                     }
                 }
             }
