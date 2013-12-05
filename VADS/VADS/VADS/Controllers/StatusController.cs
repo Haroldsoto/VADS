@@ -58,6 +58,19 @@ namespace VADS.Controllers
             return db.VehicleInfoModels.FirstOrDefault(model => model.VehicleId == id);
         }
 
+        public ActionResult New(int vehicleId, string stat)
+        {
+            var mant = new ManteinanceModel()
+            {
+                Detail = stat,
+                VehicleId = vehicleId,
+
+            };
+            db.ManteinanceModels.Add(mant);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Add(int? vehicleId, int? pidSpeed, int? pidRpm, int? pidThrottle, int? pidEngineLoad, int? pidAbsEngineLoad, int? pidCoolantTemp, int? pidIntakeTemp, int? pidIntakePressure, int? pidMafFlow, int? pidFuelPressure, int? pidFuelLevel, int? pidBarometric, int? pidTimingAdvance, int? pidRuntime, int? pidDistance)
         {
             var vehicleStatus = new VehicleStatusModel()
