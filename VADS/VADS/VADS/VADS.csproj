@@ -206,6 +206,10 @@
     </Compile>
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
+    <Compile Include="Migrations\201312050430377_updatedUsersandMore.cs" />
+    <Compile Include="Migrations\201312050430377_updatedUsersandMore.Designer.cs">
+      <DependentUpon>201312050430377_updatedUsersandMore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\InfoModels.cs" />
@@ -377,6 +381,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312050430377_updatedUsersandMore.resx">
+      <DependentUpon>201312050430377_updatedUsersandMore.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

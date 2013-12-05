@@ -67,15 +67,15 @@ namespace VADS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(VehicleInfoModel vehicleinfomodel)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 db.VehicleInfoModels.Add(vehicleinfomodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            //}
+            }
 
-            //ViewBag.OwnerId = new SelectList(db.OwnerModels, "Id", "Name", vehicleinfomodel.OwnerId);
-            //return View(vehicleinfomodel);
+            ViewBag.OwnerId = new SelectList(db.OwnerModels, "Id", "Name", vehicleinfomodel.OwnerId);
+            return View(vehicleinfomodel);
         }
 
         //

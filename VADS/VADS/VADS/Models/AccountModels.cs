@@ -33,6 +33,9 @@ namespace VADS.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        [Required(ErrorMessage = "El nombre completo es obligatorio.")]
+        [DataType(DataType.Text)]
+        public string NombreCompleto { get; set; }
     }
 
     public class RegisterExternalLoginModel

@@ -39,7 +39,7 @@ namespace VADS.Models
         [Required]
         public string Year { get; set; }
         [Required]
-        [StringLength(7,ErrorMessage = "Incorrect Plate ID.", MinimumLength = 7)]
+        [StringLength(7,ErrorMessage = "Placa incorrecta.", MinimumLength = 7)]
         public string Plate { get; set; }
         public int OwnerId { get; set; }
         [ForeignKey("OwnerId")]
