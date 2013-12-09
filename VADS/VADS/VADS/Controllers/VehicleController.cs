@@ -50,6 +50,7 @@ namespace VADS.Controllers
         {
             ViewBag.VehicleBrands = new SelectList(db.VehicleBrandses, "BrandId", "Brand");
             ViewBag.VehicleModels = new SelectList(db.VehicleModelses, "BrandId", "Model");
+
             ViewBag.OwnerId = new SelectList(db.OwnerModels, "Id", "Name");
             return View();
         }

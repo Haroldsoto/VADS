@@ -126,4 +126,18 @@ namespace VADS.Models
         [Required]
         public DateTime MaintenanceTime { get; set; }
     }
+
+    public class EventModel
+    {
+        [Key]
+        public int EventID { get; set; }
+
+        public int Value { get; set; }
+        public string Type { get; set; }
+        public DateTime Time { get; set; }
+        public int? VehicleId { get; set; }
+        [ForeignKey("VehicleId")]
+        public virtual VehicleInfoModel VehicleInfo { get; set; }
+
+    }
 }

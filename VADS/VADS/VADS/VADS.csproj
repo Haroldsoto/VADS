@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201312050430377_updatedUsersandMore.Designer.cs">
       <DependentUpon>201312050430377_updatedUsersandMore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312090035578_AddedEventModel.cs" />
+    <Compile Include="Migrations\201312090035578_AddedEventModel.Designer.cs">
+      <DependentUpon>201312090035578_AddedEventModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\InfoModels.cs" />
@@ -397,6 +401,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201312050430377_updatedUsersandMore.resx">
       <DependentUpon>201312050430377_updatedUsersandMore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312090035578_AddedEventModel.resx">
+      <DependentUpon>201312090035578_AddedEventModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -24,6 +24,8 @@ namespace VADS.Models
         public DbSet<VehicleModels> VehicleModelses { get; set; }
         public DbSet<ScheduleModel> ScheduleModels { get; set; }
         public DbSet<ManteinanceModel> ManteinanceModels { get; set; }
+
+        public DbSet<EventModel> EventModels { get; set; }
     }
 
     [Table("UserProfile")]
