@@ -92,7 +92,7 @@ namespace VADS.Controllers
                                         PidRuntime = pidRuntime,
                                         PidThrottle = pidThrottle,
                                         PidTimingAdvance = pidTimingAdvance,
-                                        Time = DateTime.Now
+                                        Time = DateTime.Now.AddHours(-4)
                                     };
 
             db.VehicleStatusModels.Add(vehicleStatus);

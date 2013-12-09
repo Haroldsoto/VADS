@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,12 +39,31 @@ namespace VADS.Controllers
         //
         // GET: /Event/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int value, string type, int vehicleid)
         {
+            var ev = new EventModel()
+            {
+                VehicleId = vehicleid,
+                Value = value,
+                Type = type
+            };
             ViewBag.VehicleId = new SelectList(db.VehicleInfoModels, "VehicleId", "VehicleBrand");
             return View();
         }
 
+        public ActionResult Add(int value, string type, int vehicleid)
+        {
+            var ev = new EventModel()
+            {
+                VehicleId = vehicleid,
+                Value = value,
+                Type = type,
+                Time = DateTime.Now.AddHours(-4)
+            };
+                db.EventModels.Add(ev);
+                db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
         //
         // POST: /Event/Create
 
