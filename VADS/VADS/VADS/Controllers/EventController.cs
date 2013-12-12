@@ -8,6 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using VADS.Mailers;
 using VADS.Models;
+using Google.GData.Calendar;
+using Google.GData.Client;
+using Google.GData.Extensions;
+
 
 namespace VADS.Controllers
 {
@@ -57,7 +61,33 @@ namespace VADS.Controllers
             ViewBag.VehicleId = new SelectList(db.VehicleInfoModels, "VehicleId", "VehicleBrand");
             return View();
         }
+        public ActionResult AddCalendarEvent(string titulo, string contenido, DateTime fecha)
+        {
+            CalendarService service = new CalendarService("VADS");
+            service.setUserCredentials("VADSproject@gmail.com", "123QWE!@#qwe");
+            EventEntry entry = new EventEntry();
 
+            // Set the title and content of the entry.
+            entry.Title.Text = titulo;
+            entry.Content.Content = contenido;
+
+            // Set a location for the event.
+            Where eventLocation = new Where();
+            eventLocation.ValueString = "Taller";
+            entry.Locations.Add(eventLocation);
+
+            When eventTime = new When(fecha, DateTime.Now.AddHours(1));
+            entry.Times.Add(eventTime);
+
+            Uri postUri = new Uri("https://www.google.com/calendar/feeds/default/private/full");
+
+            // Send the request and receive the response:
+            AtomEntry insertedEntry = service.Insert(postUri, entry);
+
+            //insertedEntry.Title.Text = "COROOOO";
+            //insertedEntry.Update();
+            return RedirectToAction("Index", "home");
+        }
         public ActionResult Add(int value, string type, int vehicleid)
         {
             var vehicle = db.VehicleInfoModels.FirstOrDefault(v => v.VehicleId == vehicleid);
