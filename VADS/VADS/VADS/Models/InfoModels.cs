@@ -15,6 +15,11 @@ namespace VADS.Models
         [Key]
         public int ScheduleId { get; set; }
         public DateTime Date { get; set; }
+        public int  RepID { get; set; }
+        public TYPE Type { get; set; }
+        public int? VehicleId { get; set; }
+        [ForeignKey("VehicleId")]
+        public virtual VehicleInfoModel VehicleInfo { get; set; }
     }
 
     public class TotoModel
@@ -140,4 +145,5 @@ namespace VADS.Models
         public virtual VehicleInfoModel VehicleInfo { get; set; }
 
     }
+
 }
