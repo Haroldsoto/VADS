@@ -60,6 +60,16 @@ namespace VADS.Controllers
             return this.Json(modelsList, JsonRequestBehavior.AllowGet);
         }
 
+        //public ActionResult GetModels(int brand)
+        //{
+        //    var vm = db.VehicleModelses.Where(m => m.BrandId == brand).Select(c => new SelectListItem
+        //    {
+        //        Text = c.ModelName,
+        //        Value = c.Id.ToString()
+        //    });
+
+        //    return vm;
+        //}
 
         //
         // POST: /vehicle/Create

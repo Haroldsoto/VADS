@@ -19,7 +19,7 @@ namespace VADS.Controllers
             get { return _userMailer; }
             set { _userMailer = value; }
         }
-        //
+        
         // GET: /Status/
 
         public ActionResult Index()
@@ -50,7 +50,7 @@ namespace VADS.Controllers
             ViewBag.VehicleId = new SelectList(db.VehicleInfoModels, "VehicleId", "VehicleBrand");
             return View();
         }
-
+        
         //
         // POST: /Status/Create
         public VehicleInfoModel GetVehicleInfoByVehicleID(int? id)
@@ -69,7 +69,7 @@ namespace VADS.Controllers
             db.ManteinanceModels.Add(mant);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
-        }
+        }   
 
         public ActionResult Add(int? vehicleId, int? pidSpeed, int? pidRpm, int? pidThrottle, int? pidEngineLoad, int? pidAbsEngineLoad, int? pidCoolantTemp, int? pidIntakeTemp, int? pidIntakePressure, int? pidMafFlow, int? pidFuelPressure, int? pidFuelLevel, int? pidBarometric, int? pidTimingAdvance, int? pidRuntime, int? pidDistance)
         {
