@@ -21,8 +21,8 @@ namespace VADS.Models
         public DbSet<OwnerModel> OwnerModels { get; set; }
         public DbSet<VehicleStatusModel> VehicleStatusModels { get; set; }
         public DbSet<TotoModel> TotoModels { get; set; }
-        public DbSet<VehicleBrands> VehicleBrandses { get; set; }
-        public DbSet<VehicleModels> VehicleModelses { get; set; }
+        public DbSet<VehicleBrand> VehicleBrands { get; set; }
+        public DbSet<VehicleModel> VehicleModels { get; set; }
         public DbSet<ManteinanceModel> ManteinanceModels { get; set; }
         public DbSet<EventModel> EventModels { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
@@ -32,7 +32,7 @@ namespace VADS.Models
     public class UserProfile
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
         [Required(ErrorMessage = "El nombre completo es obligatorio.")]

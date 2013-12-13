@@ -217,6 +217,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312130612417_RefactoringVehicleModelBrand.cs" />
+    <Compile Include="Migrations\201312130612417_RefactoringVehicleModelBrand.Designer.cs">
+      <DependentUpon>201312130612417_RefactoringVehicleModelBrand.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
@@ -411,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312090035578_AddedEventModel.resx">
       <DependentUpon>201312090035578_AddedEventModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312130612417_RefactoringVehicleModelBrand.resx">
+      <DependentUpon>201312130612417_RefactoringVehicleModelBrand.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

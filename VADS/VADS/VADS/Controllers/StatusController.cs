@@ -113,7 +113,7 @@ namespace VADS.Controllers
                 UserMailer.Maintenance(vehicleStatus.VehicleInfo.OwnerModel.Email,
                                        vehicleStatus.VehicleInfo.OwnerModel.Name,
                                        vehicleStatus.VehicleInfo.OwnerModel.LastName,
-                                       vehicleStatus.VehicleInfo.VehicleBrand + " " + vehicleStatus.VehicleInfo.VehicleModel + " " + 
+                                       vehicleStatus.VehicleInfo.VehicleModel.VehicleBrand.Brand + " " + vehicleStatus.VehicleInfo.VehicleModel + " " + 
                                        vehicleStatus.VehicleInfo.Year, mant.Detail/*todo: parameters*/).Send();
             }
             

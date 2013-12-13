@@ -95,7 +95,7 @@ namespace VADS.Controllers
             var name = vehicle.OwnerModel.Name;
             var lastName = vehicle.OwnerModel.LastName;
             var email = vehicle.OwnerModel.Email;
-            var vehicleInfo = vehicle.VehicleBrand + " " + vehicle.VehicleModel + " " + vehicle.Year;
+            var vehicleInfo = vehicle.VehicleModel.VehicleBrand.Brand + " " + vehicle.VehicleModel + " " + vehicle.Year;
             var ev = new EventModel()
             {
                 VehicleId = vehicleid,
