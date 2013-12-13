@@ -1,94 +1,62 @@
-﻿@using System.Collections
-@using Microsoft.Ajax.Utilities
+﻿@using Microsoft.Ajax.Utilities
 @using VADS.Models
-@model VADS.Models.VehicleInfoModel
+@model VehicleInfoModel
 
 @{
     ViewBag.Title = "Añadir vehículo";
 }
 
 <h2>Añadir vehículo</h2>
-<br/>
+<br />
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>VehicleInfoModel</legend>
-        
-        <div class="editor-label">
-            @Html.Label("Marca")
+        <div>
+            <label>Marca</label>
         </div>
-        <div class="editor-field">
-            //**/
-            @Html.ValidationMessageFor(model => model.VehicleBrand)
+        <div>
+            @Html.DropDownListFor(m => m.VehicleModel.BrandId, (IEnumerable<SelectListItem>)ViewBag.VehicleBrands, "Seleccione Una Marca")
         </div>
-        
-        @*<script type="text/javascript">
-            function CascadingDDLViewModel() {
-                this.models = ko.observableArray([]);
-            }
-
-            var objVM = new CascadingDDLViewModel();
-            ko.applyBindings(objVM);
-            
-            function FetchModels() {
-                var brandId = $("#ddlBrands").val();
-                $.getJSON("/vehicle/GetStates/" + brandId, null, function (data) {
-                    objVM.models(data);
-                });
-            }
-        </script>*@
         <p data-bind="visible: models().length > 0">
-            <div class="editor-label">
-                @Html.Label("Modelo")
+            <div>
+                <label>Modelo</label>
             </div>
-            @*<select data-bind="options: models, optionsText: 'Model', optionsValue: 'BrandId', optionsCaption: '-Select one-' "></select>*@
+            @Html.DropDownListFor(m => m.VehicleModelId, Enumerable.Empty<SelectListItem>())
         </p>
-        
-        <div id="modelos" class="editor-field">
-            @*@{
-
-                var db = new VehicleContext();
-                var query = db.VehicleModelses.Select(models => new {models.Model, models.BrandId}).Where(Model.ToString);
-                ViewBag.VehicleModels = new SelectList(query.AsEnumerable(), "Model", "Model");
-
-            }*@
-            @Html.DropDownList("VehicleModels", "-Select one-")
-            @Html.ValidationMessageFor(model => model.VehicleModel)
-        </div>
-
-        <div class="editor-label">
+        <div>
             @Html.Label("Año")
         </div>
-        <div class="editor-field">
+        <div>
             @{
-                var years = Enumerable.Range(1996, DateTime.Now.Year - 1995)
-                   .ToList()
-                   .OrderByDescending(d => d)
-                   .Select(e => new SelectListItem
-                   {
-                       Text = e.ToStringInvariant(),
-                       Value = e.ToStringInvariant()
-                   });
+    var years = Enumerable.Range(1996, DateTime.Now.Year - 1995)
+       .ToList()
+       .OrderByDescending(d => d)
+       .Select(e => new SelectListItem
+       {
+           Text = e.ToStringInvariant(),
+           Value = e.ToStringInvariant()
+       });
             }
             @Html.DropDownListFor(model => model.Year, years, "-Seleccione uno-")
             @Html.ValidationMessageFor(model => model.Year)
         </div>
 
-        <div class="editor-label">  
+        <div>
             @Html.Label("Placa")
         </div>
-        <div class="editor-field">
+        <div>
             @Html.EditorFor(model => model.Plate)
             @Html.ValidationMessageFor(model => model.Plate)
         </div>
 
-        <div class="editor-label">
+        <div>
             @Html.Label("Dueño")
         </div>
-        <div class="editor-field">
+        <div>
             @Html.DropDownList("OwnerId", "-Seleccione uno-")
             @Html.ValidationMessageFor(model => model.OwnerId)
         </div>
@@ -105,4 +73,30 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function () {
+            //Event that handles population of models. Out of KO object to reduce size of json object
+            $("#VehicleModel_BrandId").change(function () {
+                var options = $("#VehicleModelId");
+                var brandId = $(this).val();
+                if (brandId == "") {
+                    options.html("");
+                    return;
+                }
+                $.ajax("/Vehicle/GetModelsByBrand", {
+                    data: { "brandId": brandId },
+                    type: "get",
+                    contentType: "application/json",
+                    success: function (result) {
+                        options.html("");
+                        $.each(result, function () {
+                            options.append($("<option />").val(this.Value).text(this.Text));
+                        });
+                        $("#VehicleModelId").change();
+                    }
+                });
+            });
+        });
+    </script>
 }
