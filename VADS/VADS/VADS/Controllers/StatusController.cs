@@ -114,7 +114,7 @@ namespace VADS.Controllers
                                        vehicleStatus.VehicleInfo.OwnerModel.Name,
                                        vehicleStatus.VehicleInfo.OwnerModel.LastName,
                                        vehicleStatus.VehicleInfo.VehicleModel.VehicleBrand.Brand + " " + vehicleStatus.VehicleInfo.VehicleModel + " " + 
-                                       vehicleStatus.VehicleInfo.Year, mant.Detail/*todo: parameters*/).Send();
+                                       vehicleStatus.VehicleInfo.Year, mant.Detail).Send();
             }
             
             
