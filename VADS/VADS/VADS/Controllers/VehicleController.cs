@@ -5,13 +5,14 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using VADS.Models;
 
 namespace VADS.Controllers
 {
-    
+
     public class VehicleController : Controller
     {
         private UsersContext db = new UsersContext();
@@ -48,28 +49,32 @@ namespace VADS.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.VehicleBrands = new SelectList(db.VehicleBrandses, "BrandId", "Brand");
-            ViewBag.VehicleModels = new SelectList(db.VehicleModelses, "BrandId", "Model");
 
+            ViewBag.VehicleBrands = db.VehicleBrands.ToList().Select(c => new SelectListItem
+                {
+                    Text = c.Brand,
+                    Value = c.BrandId.ToString(CultureInfo.InvariantCulture)
+                });
             ViewBag.OwnerId = new SelectList(db.OwnerModels, "Id", "Name");
             return View();
         }
-        public JsonResult GetStates(int id)
+
+        public ActionResult GetModelsByBrand(int brandId)
         {
-            var modelsList = new SelectList(db.VehicleModelses, "BrandId", "Model").ToList().Where(item => item.Value == id.ToString(CultureInfo.InvariantCulture));
-            return this.Json(modelsList, JsonRequestBehavior.AllowGet);
+            if (brandId == 0)
+            {
+                return Json(Enumerable.Empty<SelectListItem>(), JsonRequestBehavior.AllowGet);
+            }
+            var modelos = db.VehicleModels.Where(m => m.BrandId == brandId)
+                .ToList().Select(c => new SelectListItem
+            {
+                Text = c.Model,
+                Value = c.ModelId.ToString(CultureInfo.InvariantCulture)
+            });
+
+            return Json(modelos, JsonRequestBehavior.AllowGet);
         }
 
-        //public ActionResult GetModels(int brand)
-        //{
-        //    var vm = db.VehicleModelses.Where(m => m.BrandId == brand).Select(c => new SelectListItem
-        //    {
-        //        Text = c.ModelName,
-        //        Value = c.Id.ToString()
-        //    });
-
-        //    return vm;
-        //}
 
         //
         // POST: /vehicle/Create
@@ -78,13 +83,18 @@ namespace VADS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(VehicleInfoModel vehicleinfomodel)
         {
+            vehicleinfomodel.VehicleModel = null;
             if (ModelState.IsValid)
             {
                 db.VehicleInfoModels.Add(vehicleinfomodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.VehicleBrands = db.VehicleBrands.ToList().Select(c => new SelectListItem
+            {
+                Text = c.Brand,
+                Value = c.BrandId.ToString(CultureInfo.InvariantCulture)
+            });
             ViewBag.OwnerId = new SelectList(db.OwnerModels, "Id", "Name", vehicleinfomodel.OwnerId);
             return View(vehicleinfomodel);
         }
