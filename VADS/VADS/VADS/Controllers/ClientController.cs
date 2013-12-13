@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,6 +19,34 @@ namespace VADS.Controllers
 
         public ActionResult Index()
         {
+            var attendants = db.UserProfiles.ToList();
+            var startDate = new DateTime(2013, 11, 1);
+            const int numberofDays = 60;
+            const int rounds = 8;
+
+            foreach (var userProfile in attendants)
+            {
+                for (int i = 0; i < numberofDays; i++)
+                {
+                    for (var j = 0; j < rounds; j++)
+                    {
+                        db.Appointments.AddOrUpdate(
+                            new Appointment
+                            {
+                                UserProfile = userProfile,
+                                AttendantId = userProfile.UserId,
+                                Date = startDate.AddDays(i),
+                                Id = Guid.NewGuid(),
+                                Round = j,
+                                Maintenance = null,
+                                VehicleId = null,
+                                VehicleInfoModel = null
+                            });
+                    }
+                }
+            }
+            db.SaveChanges();
+
             return View(db.OwnerModels.ToList());
         }
 
