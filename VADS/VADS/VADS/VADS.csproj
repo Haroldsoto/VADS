@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201312130654470_UnnecesaryValidation.Designer.cs">
       <DependentUpon>201312130654470_UnnecesaryValidation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312130716439_VehicleModelForenkey.cs" />
+    <Compile Include="Migrations\201312130716439_VehicleModelForenkey.Designer.cs">
+      <DependentUpon>201312130716439_VehicleModelForenkey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
@@ -425,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312130654470_UnnecesaryValidation.resx">
       <DependentUpon>201312130654470_UnnecesaryValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312130716439_VehicleModelForenkey.resx">
+      <DependentUpon>201312130716439_VehicleModelForenkey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

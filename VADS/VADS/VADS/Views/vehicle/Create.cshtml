@@ -19,13 +19,13 @@
             <label>Marca</label>
         </div>
         <div>
-            @Html.DropDownListFor(m => m.VehicleModel.BrandId, (IEnumerable<SelectListItem>)ViewBag.VehicleBrands, "Seleccione Una Marca")
+            @Html.DropDownList("BrandId", (IEnumerable<SelectListItem>)ViewBag.VehicleBrands, "Seleccione Una Marca")
         </div>
         <p data-bind="visible: models().length > 0">
             <div>
                 <label>Modelo</label>
             </div>
-            @Html.DropDownListFor(m => m.VehicleModelId, Enumerable.Empty<SelectListItem>())
+            @Html.DropDownListFor(m => m.ModelId, Enumerable.Empty<SelectListItem>())
         </p>
         <div>
             @Html.Label("Año")
@@ -77,8 +77,8 @@
     <script>
         $(function () {
             //Event that handles population of models. Out of KO object to reduce size of json object
-            $("#VehicleModel_BrandId").change(function () {
-                var options = $("#VehicleModelId");
+            $("#BrandId").change(function () {
+                var options = $("#ModelId");
                 var brandId = $(this).val();
                 if (brandId == "") {
                     options.html("");
@@ -93,7 +93,7 @@
                         $.each(result, function () {
                             options.append($("<option />").val(this.Value).text(this.Text));
                         });
-                        $("#VehicleModelId").change();
+                        $("#ModelId").change();
                     }
                 });
             });

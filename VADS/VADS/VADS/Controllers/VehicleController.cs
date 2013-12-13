@@ -22,8 +22,8 @@ namespace VADS.Controllers
 
         public ActionResult Index()
         {
-            var vehicleinfomodels = db.VehicleInfoModels.Include(v => v.OwnerModel);
-            return View(vehicleinfomodels.ToList());
+            var vehicleinfomodels = db.VehicleInfoModels.ToList();
+            return View(vehicleinfomodels);
         }
 
         //

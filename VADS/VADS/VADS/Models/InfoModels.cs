@@ -23,7 +23,7 @@ namespace VADS.Models
         [Key]
         public int VehicleId { get; set; }
         public virtual VehicleModel VehicleModel { get; set; }
-        public int VehicleModelId { get; set; }
+        public int ModelId { get; set; }
 
         [Required]
         public string Year { get; set; }
