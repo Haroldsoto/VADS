@@ -108,18 +108,19 @@ namespace VADS.Controllers
             {  
                 case "MPH_MAYOR":
                     if(value > 50)
-                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite");
+                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite").Send();
                     break;
                 case "OIL_CHANGE":
-                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite");
+                    UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite").Send();
                     break;
                 case "RPM_MAYOR":
                     if(value > 2000)
-                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Revoluciones por minuto mayor que: " + value.ToString());
+                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Revoluciones por minuto mayor que: " + value.ToString()).Send();
                     break;
                 case "FUEL_MENOR":
-                    if(value < 2000)
-                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Combustible menor que: " + value.ToString());
+                    if (value < 2000)
+                        UserMailer.Maintenance(email, name, lastName, vehicleInfo,
+                            "Combustible menor que: " + value.ToString()).Send();
                     break;
             }
             db.EventModels.Add(ev);
