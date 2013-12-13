@@ -1,10 +1,10 @@
 ﻿@model VADS.Models.OwnerModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Registrar cliente";
 }
 
-<h2>Create</h2>
+<h2>Registrar cliente nuevo</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -14,7 +14,7 @@
         <legend>OwnerModel</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.Label("Nombre")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -22,7 +22,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.LastName)
+            @Html.Label("Apellido")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.LastName)
@@ -30,7 +30,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
+            @Html.Label("Email")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Email)
@@ -38,7 +38,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Phone)
+            @Html.Label("Teléfono")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Phone)
@@ -46,13 +46,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Registrar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Volver", "Index")
+    @Html.ActionLink("Atrás", "Index")
 </div>
 
 @section Scripts {

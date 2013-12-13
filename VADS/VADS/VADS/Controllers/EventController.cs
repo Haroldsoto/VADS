@@ -103,8 +103,7 @@ namespace VADS.Controllers
                 Type = type,
                 Time = DateTime.Now.AddHours(-4)
             };
-            db.EventModels.Add(ev);
-            db.SaveChanges();
+            
             switch (type)
             {  
                 case "MPH_MAYOR":
@@ -123,6 +122,8 @@ namespace VADS.Controllers
                         UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Combustible menor que: " + value.ToString());
                     break;
             }
+            db.EventModels.Add(ev);
+            db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
         //
