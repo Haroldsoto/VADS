@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
+using VADS.Mailers;
 
 namespace VADS.Models
 {
@@ -25,6 +26,7 @@ namespace VADS.Models
         public DbSet<ScheduleModel> ScheduleModels { get; set; }
         public DbSet<ManteinanceModel> ManteinanceModels { get; set; }
         public DbSet<EventModel> EventModels { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
     }
 
     [Table("UserProfile")]
