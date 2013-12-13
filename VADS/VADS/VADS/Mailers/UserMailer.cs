@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Mvc.Mailer;
 using VADS.Models;
 
@@ -22,24 +23,25 @@ namespace VADS.Mailers
             ViewBag.Name = clientName;
             ViewBag.LastName = clientLastName;
             ViewBag.Maintenance = maintenance;
-            
-            var klk = Guid.NewGuid();
 
-            //_db.Appointments.Add(new Appointment
-            //{
-            //    Id = klk,
-            //    VehicleId = vehicleId,
-            //    AttendantId = attendantId,
-            //    Maintenance = maintenance
-            //});
+            var owner = _db.OwnerModels.FirstOrDefault(model => model.Email == clientMail);
 
-            ViewBag.Link = "http://vads.azurewebsites.net/" + klk;
+            var invitation = new Invitation
+            {
+                Id = Guid.NewGuid(),
+                OwnerModel = owner,
+                UserId = owner.Id
+            };
+
+            _db.Invitations.Add(invitation);
+            _db.SaveChanges();
+            ViewBag.Link = "http://vads.azurewebsites.net/Appointment/Select?invitation=" + invitation.Id +
+                           "&maintenance=" + maintenance;
             return Populate(x =>
             {
                 x.Subject = maintenance + " Maintenance Required";
                 x.ViewName = "Maintenance";
                 x.To.Add(clientMail);
-
             });
         }
 

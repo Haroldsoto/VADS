@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Security.Permissions;
 using System.Web;
 using System.Web.Mvc;
 using VADS.Models;
@@ -12,6 +14,17 @@ namespace VADS.Controllers
     public class AppointmentController : Controller
     {
         private UsersContext db = new UsersContext();
+
+
+        public ActionResult Select(Guid invitation, string maintenance)
+        {
+            var owner = db.Invitations.FirstOrDefault(invitation1 => invitation1.Id == invitation).OwnerModel;
+            ViewBag.ownerId = owner.Id;
+            ViewBag.Maintenance = maintenance;
+            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null);
+            return View(appointments);
+        }
+
 
         //
         // GET: /Appointment/
@@ -137,6 +150,19 @@ namespace VADS.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public ActionResult Seleccionar(int ownerId, Guid appointmentId, string maintenance)
+        {
+            var vehicleinfomodel = db.VehicleInfoModels.FirstOrDefault(model => model.OwnerId == ownerId);
+
+            var selectedAppoint = db.Appointments.First(appointment => appointment.Id == appointmentId);
+            selectedAppoint.VehicleId = vehicleinfomodel.VehicleId;
+            selectedAppoint.Maintenance = maintenance;
+
+            db.Appointments.AddOrUpdate(selectedAppoint);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

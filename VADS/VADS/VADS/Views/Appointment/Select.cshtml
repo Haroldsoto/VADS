@@ -1,0 +1,56 @@
+﻿@model IEnumerable<VADS.Models.Appointment>
+
+@{
+    ViewBag.Title = "Seleccionar Cita";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Maintenance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Round)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserProfile.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleInfoModel.Year)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maintenance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Round)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserProfile.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleInfoModel.Year)
+            </td>
+            <td>
+                @Html.ActionLink("Seleccionar Cita", "Seleccionar", "Appointment", new { ownerId = ViewBag.ownerId, appointmentId = item.Id, maintenance = ViewBag.maintenance }, null)
+            </td>
+        </tr>
+    }
+
+</table>

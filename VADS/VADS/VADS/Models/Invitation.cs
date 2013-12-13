@@ -10,7 +10,7 @@ namespace VADS.Models
         public Guid Id { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual UserProfile UserProfile { get; set; }
+        public virtual OwnerModel OwnerModel { get; set; }
         public int UserId { get; set; }
 
     }
