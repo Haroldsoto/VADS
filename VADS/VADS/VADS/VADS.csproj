@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201312132128075_fixingagin.Designer.cs">
       <DependentUpon>201312132128075_fixingagin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312132235200_holAKAC.cs" />
+    <Compile Include="Migrations\201312132235200_holAKAC.Designer.cs">
+      <DependentUpon>201312132235200_holAKAC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
@@ -434,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312132128075_fixingagin.resx">
       <DependentUpon>201312132128075_fixingagin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312132235200_holAKAC.resx">
+      <DependentUpon>201312132235200_holAKAC.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -21,7 +21,7 @@ namespace VADS.Controllers
             var owner = db.Invitations.FirstOrDefault(invitation1 => invitation1.Id == invitation).OwnerModel;
             ViewBag.ownerId = owner.Id;
             ViewBag.Maintenance = maintenance;
-            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null);
+            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).ToList();
             return View(appointments);
         }
 
