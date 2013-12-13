@@ -5,13 +5,13 @@ namespace VADS.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class AddedEventModel : IMigrationMetadata
+    public sealed partial class hola : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedEventModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(hola));
         
         string IMigrationMetadata.Id
         {
-            get { return "201312090035578_AddedEventModel"; }
+            get { return "201312130849308_hola"; }
         }
         
         string IMigrationMetadata.Source

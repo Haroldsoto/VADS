@@ -4,7 +4,7 @@
     ViewBag.Title = "Clientes";
 }
 
-<h2>Index</h2>
+<h2>Clientes</h2>
 
 <p>
     @Html.ActionLink("Registrar un nuevo cliente", "Create")
@@ -12,16 +12,16 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.Label("Nombre ")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.Label("Apellido ")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.Label("Email ")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.Label("Teléfono    ")
         </th>
         <th></th>
     </tr>

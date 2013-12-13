@@ -1,0 +1,50 @@
+﻿@model VADS.Models.Appointment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Appointment</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Maintenance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Maintenance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Round)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Round)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VehicleInfoModel.Year)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleInfoModel.Year)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

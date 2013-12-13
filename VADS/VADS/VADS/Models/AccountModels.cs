@@ -35,7 +35,7 @@ namespace VADS.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
-        [Required(ErrorMessage = "El nombre completo es obligatorio.")]
+        //[Required(ErrorMessage = "El nombre completo es obligatorio.")]
         [DataType(DataType.Text)]
         public string NombreCompleto { get; set; }
     }
