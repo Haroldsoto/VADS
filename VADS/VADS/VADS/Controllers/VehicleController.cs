@@ -83,7 +83,6 @@ namespace VADS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(VehicleInfoModel vehicleinfomodel)
         {
-            vehicleinfomodel.VehicleModel = null;
             if (ModelState.IsValid)
             {
                 db.VehicleInfoModels.Add(vehicleinfomodel);

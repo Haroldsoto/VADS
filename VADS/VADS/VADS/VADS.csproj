@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201312130612417_RefactoringVehicleModelBrand.Designer.cs">
       <DependentUpon>201312130612417_RefactoringVehicleModelBrand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312130654470_UnnecesaryValidation.cs" />
+    <Compile Include="Migrations\201312130654470_UnnecesaryValidation.Designer.cs">
+      <DependentUpon>201312130654470_UnnecesaryValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
@@ -418,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312130612417_RefactoringVehicleModelBrand.resx">
       <DependentUpon>201312130612417_RefactoringVehicleModelBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312130654470_UnnecesaryValidation.resx">
+      <DependentUpon>201312130654470_UnnecesaryValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
