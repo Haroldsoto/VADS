@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201312130435554_asdf.Designer.cs">
       <DependentUpon>201312130435554_asdf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312130551026_addedAppointmentTbl.cs" />
+    <Compile Include="Migrations\201312130551026_addedAppointmentTbl.Designer.cs">
+      <DependentUpon>201312130551026_addedAppointmentTbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
@@ -418,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312130435554_asdf.resx">
       <DependentUpon>201312130435554_asdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312130551026_addedAppointmentTbl.resx">
+      <DependentUpon>201312130551026_addedAppointmentTbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
