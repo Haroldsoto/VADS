@@ -222,12 +222,17 @@
     <Compile Include="Migrations\201312132038055_Initial.Designer.cs">
       <DependentUpon>201312132038055_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312132114507_agregandoIvitaciones.cs" />
+    <Compile Include="Migrations\201312132114507_agregandoIvitaciones.Designer.cs">
+      <DependentUpon>201312132114507_agregandoIvitaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\InfoModels.cs" />
+    <Compile Include="Models\Invitation.cs" />
     <Compile Include="Models\VehiclesModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -411,6 +416,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201312132038055_Initial.resx">
       <DependentUpon>201312132038055_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312132114507_agregandoIvitaciones.resx">
+      <DependentUpon>201312132114507_agregandoIvitaciones.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

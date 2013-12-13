@@ -21,8 +21,8 @@ namespace VADS.Controllers
         {
             //var attendants = db.UserProfiles.ToList();
             //var startDate = new DateTime(2013, 11, 1);
-            //const int numberofDays = 60;
-            //const int rounds = 8;
+            //const int numberofDays = 30;
+            //const int rounds = 9;
 
             //foreach (var userProfile in attendants)
             //{
@@ -41,7 +41,8 @@ namespace VADS.Controllers
             //                    Maintenance = null,
             //                    VehicleId = null,
             //                    VehicleInfoModel = null
-            //                });
+            //                }
+            //                );
             //        }
             //    }
             //}
