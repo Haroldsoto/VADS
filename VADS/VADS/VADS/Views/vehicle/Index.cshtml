@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<VADS.Models.VehicleInfoModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Vehículos";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New Vehicle", "Create")
+    @Html.ActionLink("Registrar un vehículo", "Create")
 </p>
 <table>
     <tr>
@@ -23,7 +23,7 @@
             @Html.DisplayNameFor(model => model.Plate)
         </th>
         <th>
-            @Html.DisplayName("Client Name")
+            @Html.DisplayName("Nombre del cliente")
         </th>
         <th></th>
     </tr>
@@ -46,9 +46,9 @@
                 @Html.DisplayFor(modelItem => item.OwnerModel.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.VehicleId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.VehicleId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.VehicleId })
+                @Html.ActionLink("Editar", "Edit", new { id=item.VehicleId }) |
+                @Html.ActionLink("Detalles", "Details", new { id=item.VehicleId }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.VehicleId })
             </td>
         </tr>
     }
@@ -56,5 +56,5 @@
 </table>
 <br />
 <div>
-    @Html.ActionLink("Back to Manage Dashboard", "Index", "Manage")
+    @Html.ActionLink("Volver al panel de administración", "Index", "Manage")
 </div>
