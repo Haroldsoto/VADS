@@ -3,7 +3,7 @@ namespace VADS.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class hola : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -22,16 +22,15 @@ namespace VADS.Migrations
                 c => new
                     {
                         VehicleId = c.Int(nullable: false, identity: true),
-                        VehicleModelId = c.Int(nullable: false),
+                        ModelId = c.Int(nullable: false),
                         Year = c.String(nullable: false),
                         Plate = c.String(nullable: false, maxLength: 7),
                         OwnerId = c.Int(nullable: false),
-                        VehicleModel_ModelId = c.Int(),
                     })
                 .PrimaryKey(t => t.VehicleId)
-                .ForeignKey("dbo.VehicleModels", t => t.VehicleModel_ModelId)
+                .ForeignKey("dbo.VehicleModels", t => t.ModelId, cascadeDelete: true)
                 .ForeignKey("dbo.OwnerModels", t => t.OwnerId, cascadeDelete: true)
-                .Index(t => t.VehicleModel_ModelId)
+                .Index(t => t.ModelId)
                 .Index(t => t.OwnerId);
             
             CreateTable(
@@ -39,7 +38,7 @@ namespace VADS.Migrations
                 c => new
                     {
                         ModelId = c.Int(nullable: false, identity: true),
-                        Model = c.String(nullable: false),
+                        Model = c.String(),
                         BrandId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ModelId)
@@ -51,7 +50,7 @@ namespace VADS.Migrations
                 c => new
                     {
                         BrandId = c.Int(nullable: false, identity: true),
-                        Brand = c.String(nullable: false),
+                        Brand = c.String(),
                     })
                 .PrimaryKey(t => t.BrandId);
             
@@ -158,7 +157,7 @@ namespace VADS.Migrations
             DropIndex("dbo.VehicleStatusModels", new[] { "VehicleId" });
             DropIndex("dbo.VehicleModels", new[] { "BrandId" });
             DropIndex("dbo.VehicleInfoModels", new[] { "OwnerId" });
-            DropIndex("dbo.VehicleInfoModels", new[] { "VehicleModel_ModelId" });
+            DropIndex("dbo.VehicleInfoModels", new[] { "ModelId" });
             DropForeignKey("dbo.Appointments", "VehicleId", "dbo.VehicleInfoModels");
             DropForeignKey("dbo.Appointments", "AttendantId", "dbo.UserProfile");
             DropForeignKey("dbo.EventModels", "VehicleId", "dbo.VehicleInfoModels");
@@ -166,7 +165,7 @@ namespace VADS.Migrations
             DropForeignKey("dbo.VehicleStatusModels", "VehicleId", "dbo.VehicleInfoModels");
             DropForeignKey("dbo.VehicleModels", "BrandId", "dbo.VehicleBrands");
             DropForeignKey("dbo.VehicleInfoModels", "OwnerId", "dbo.OwnerModels");
-            DropForeignKey("dbo.VehicleInfoModels", "VehicleModel_ModelId", "dbo.VehicleModels");
+            DropForeignKey("dbo.VehicleInfoModels", "ModelId", "dbo.VehicleModels");
             DropTable("dbo.Appointments");
             DropTable("dbo.EventModels");
             DropTable("dbo.ManteinanceModels");

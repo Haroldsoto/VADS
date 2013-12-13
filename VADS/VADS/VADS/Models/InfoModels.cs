@@ -23,7 +23,7 @@ namespace VADS.Models
         [Key]
         public int VehicleId { get; set; }
         public virtual VehicleModel VehicleModel { get; set; }
-        public int VehicleModelId { get; set; }
+        public int ModelId { get; set; }
 
         [Required]
         public string Year { get; set; }
@@ -39,16 +39,12 @@ namespace VADS.Models
     {
         [Key]
         public int BrandId { get; set; }
-        [Required]
-        [DataType(DataType.Text)]
         public string Brand { get; set; }
     }
     public class VehicleModel
     {
         [Key]
         public int ModelId { get; set; }
-        [Required]
-        [DataType(DataType.Text)]
         public string Model { get; set; }
         public virtual VehicleBrand VehicleBrand { get; set; }
         public int BrandId { get; set; }

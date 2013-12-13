@@ -22,8 +22,8 @@ namespace VADS.Controllers
 
         public ActionResult Index()
         {
-            var vehicleinfomodels = db.VehicleInfoModels.Include(v => v.OwnerModel);
-            return View(vehicleinfomodels.ToList());
+            var vehicleinfomodels = db.VehicleInfoModels.ToList();
+            return View(vehicleinfomodels);
         }
 
         //
@@ -83,7 +83,6 @@ namespace VADS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(VehicleInfoModel vehicleinfomodel)
         {
-            vehicleinfomodel.VehicleModel = null;
             if (ModelState.IsValid)
             {
                 db.VehicleInfoModels.Add(vehicleinfomodel);

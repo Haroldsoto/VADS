@@ -218,9 +218,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201312130849308_hola.cs" />
-    <Compile Include="Migrations\201312130849308_hola.Designer.cs">
-      <DependentUpon>201312130849308_hola.cs</DependentUpon>
+    <Compile Include="Migrations\201312132038055_Initial.cs" />
+    <Compile Include="Migrations\201312132038055_Initial.Designer.cs">
+      <DependentUpon>201312132038055_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
@@ -409,8 +409,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312130849308_hola.resx">
-      <DependentUpon>201312130849308_hola.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312132038055_Initial.resx">
+      <DependentUpon>201312132038055_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
