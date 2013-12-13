@@ -23,7 +23,6 @@ namespace VADS.Models
         public DbSet<TotoModel> TotoModels { get; set; }
         public DbSet<VehicleBrands> VehicleBrandses { get; set; }
         public DbSet<VehicleModels> VehicleModelses { get; set; }
-        public DbSet<ScheduleModel> ScheduleModels { get; set; }
         public DbSet<ManteinanceModel> ManteinanceModels { get; set; }
         public DbSet<EventModel> EventModels { get; set; }
         public DbSet<Appointment> Appointments { get; set; }

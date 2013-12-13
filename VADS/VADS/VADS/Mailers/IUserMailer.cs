@@ -6,7 +6,7 @@ namespace VADS.Mailers
     public interface IUserMailer
     {
         MvcMailMessage Maintenance(string clientMail, string clientName, string clientLastName, string vehicle,
-            string maintenance, int vehicleId, int attendantId);
+            string maintenance);
 
         MvcMailMessage PasswordReset();
     }

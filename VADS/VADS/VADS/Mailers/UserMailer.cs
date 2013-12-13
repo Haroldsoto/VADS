@@ -13,7 +13,7 @@ namespace VADS.Mailers
             MasterName = "_Layout";
         }
 
-        public virtual MvcMailMessage Maintenance(string clientMail, string clientName, string clientLastName, string vehicle, string maintenance, int vehicleId, int attendantId)
+        public virtual MvcMailMessage Maintenance(string clientMail, string clientName, string clientLastName, string vehicle, string maintenance)
         {
             //ViewBag.Data = someObject;
             //string vehicleData = vehicle.VehicleBrand.ToString() + vehicle.VehicleModel.ToString() + vehicle.Year.ToString();
@@ -22,17 +22,16 @@ namespace VADS.Mailers
             ViewBag.Name = clientName;
             ViewBag.LastName = clientLastName;
             ViewBag.Maintenance = maintenance;
-
-
-
+            
             var klk = Guid.NewGuid();
 
-            _db.Appointments.Add(new Appointment
-            {
-                Id = klk,
-                VehicleId = vehicleId,
-                AttendantId = attendantId
-            });
+            //_db.Appointments.Add(new Appointment
+            //{
+            //    Id = klk,
+            //    VehicleId = vehicleId,
+            //    AttendantId = attendantId,
+            //    Maintenance = maintenance
+            //});
 
             ViewBag.Link = "http://vads.azurewebsites.net/" + klk;
             return Populate(x =>

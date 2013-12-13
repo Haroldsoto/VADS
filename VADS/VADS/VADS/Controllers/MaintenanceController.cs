@@ -34,7 +34,7 @@ namespace VADS.Controllers
             //UserMailer.Maintenance("mamodom@gmail.com", "Maximo", "Dominguez", "Mitsubishi Montero 2005", "Oil change").Send();
             //UserMailer.Maintenance("haroldsoto30@gmail.com", "Harold", "Soto", "Toyota Camry 2008", "Oil change").Send();
             //UserMailer.Maintenance("jose.lopez.c@gmail.com", "Jose Miguel", "Lopez", "Honda Civic 2004", "Oil change").Send();
-            UserMailer.Maintenance(email, name, lastName, vehicleInfo, mant,0,0/*TODO: agregar parametros*/);
+            UserMailer.Maintenance(email, name, lastName, vehicleInfo, mant/*TODO: agregar parametros*/);
             return RedirectToAction("Index", "Home");
         }
 

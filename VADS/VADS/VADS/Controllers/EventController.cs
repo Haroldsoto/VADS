@@ -61,9 +61,10 @@ namespace VADS.Controllers
             ViewBag.VehicleId = new SelectList(db.VehicleInfoModels, "VehicleId", "VehicleBrand");
             return View();
         }
-        public ActionResult AddCalendarEvent(string titulo, string contenido, DateTime fecha)
+        public ActionResult AddCalendarEvent(string titulo, string contenido, DateTime fecha, int RepresentanteID)
         {
-            CalendarService service = new CalendarService("VADS");
+            
+            CalendarService service = new CalendarService(RepresentanteID.ToString());
             service.setUserCredentials("VADSproject@gmail.com", "123QWE!@#qwe");
             EventEntry entry = new EventEntry();
 
@@ -105,7 +106,7 @@ namespace VADS.Controllers
             db.EventModels.Add(ev);
             db.SaveChanges();
             switch (type)
-            {
+            {  
                 case "MPH>":
                     if(value > 50)
                         UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite");
@@ -121,7 +122,6 @@ namespace VADS.Controllers
                     if(value < 2000)
                         UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Combustible menor que: " + value.ToString());
                     break;
-                    
             }
             return RedirectToAction("Index", "Home");
         }
