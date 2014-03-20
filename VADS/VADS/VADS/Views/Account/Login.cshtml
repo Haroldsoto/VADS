@@ -8,8 +8,8 @@
     <h1>@ViewBag.Title.</h1>
 </hgroup>
 
-<section id="loginForm">
-<h2>Utiliza una cuenta para accesar.</h2>
+<div>
+<h2>Utiliza una cuenta para acceder.</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -38,7 +38,7 @@
         @Html.ActionLink("Regístrate", "Register") si no tienes una cuenta.
     </p>
 }
-</section>
+</div>
 
 @*<section class="social" id="socialLoginForm">
     <h2>Use another service to log in.</h2>

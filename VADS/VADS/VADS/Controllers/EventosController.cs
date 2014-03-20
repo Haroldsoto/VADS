@@ -3,20 +3,27 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using VADS.Mailers;
 using VADS.Models;
 
 namespace VADS.Controllers
 {
     public class EventosController : Controller
     {
+        private IUserMailer _userMailer = new UserMailer();
         private UsersContext db = new UsersContext();
+        public IUserMailer UserMailer
+        {
+            get { return _userMailer; }
+            set { _userMailer = value; }
+        }
 
         //
         // GET: /Eventos/
 
         public ActionResult Index()
         {
-            var eventmodels = db.EventModels.Include(e => e.VehicleInfo);
+            var eventmodels = db.EventModels.Include(e => e.VehicleInfo.VehicleModel.VehicleBrand).Include(e1 => e1.VehicleInfo.OwnerModel);
             return View(eventmodels.ToList());
         }
 
@@ -62,12 +69,35 @@ namespace VADS.Controllers
 
         public ActionResult Add(int value, string type, int vehicleid)
         {
+            var vehicle = db.VehicleInfoModels.FirstOrDefault(v => v.VehicleId == vehicleid);
+            var name = vehicle.OwnerModel.Name;
+            var lastName = vehicle.OwnerModel.LastName;
+            var email = vehicle.OwnerModel.Email;
+            var vehicleInfo = vehicle.VehicleModel.VehicleBrand.Brand + " " + vehicle.VehicleModel.Model + " " + vehicle.Year;
             var model = new EventModel
             {
                 Value = value, Type = type, VehicleId = vehicleid,
-                Time = DateTime.UtcNow
+                Time = DateTime.UtcNow.AddHours(-4)
             };
-            
+            switch (type)
+            {
+                case "MPH_MAYOR":
+                    if (value > 50)
+                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite").Send();
+                    break;
+                case "OIL_CHANGE":
+                    UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite").Send();
+                    break;
+                case "RPM_MAYOR":
+                    if (value > 2000)
+                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Revoluciones por minuto mayor que: " + value.ToString()).Send();
+                    break;
+                case "FUEL_MENOR":
+                    if (value < 2000)
+                        UserMailer.Maintenance(email, name, lastName, vehicleInfo,
+                            "Combustible menor que: " + value.ToString()).Send();
+                    break;
+            }
             db.EventModels.Add(model);
             db.SaveChanges();
             return RedirectToAction("Index");
