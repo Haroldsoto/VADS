@@ -29,14 +29,7 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Time)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.VehicleInfo.VehicleBrand)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.VehicleInfo.VehicleBrand)
-    </div>
+    </div>  
 </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
