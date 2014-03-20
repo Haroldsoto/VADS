@@ -1,0 +1,9 @@
+diff a/VADS/VADS/VADS/Web.config b/VADS/VADS/VADS/Web.config	(rejected hunks)
+@@ -92,4 +92,7 @@
+     </defaultConnectionFactory>
++    <providers>
++      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
++    </providers>
+   </entityFramework>
+   <system.net>
+     <mailSettings>

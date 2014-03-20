@@ -4,20 +4,20 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Información del cliente</h2>
 
 <fieldset>
     <legend>OwnerModel</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+         Nombre
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.LastName)
+         Apellido(s)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.LastName)
@@ -31,7 +31,7 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Phone)
+         Teléfono
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Phone)

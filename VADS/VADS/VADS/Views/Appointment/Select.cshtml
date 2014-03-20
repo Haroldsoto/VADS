@@ -4,7 +4,7 @@
     ViewBag.Title = "Seleccionar Cita";
 }
 
-<h2>Index</h2>
+<h2>Horarios disponibles</h2>
 
 <p>
     @Html.ActionLink("Crear nueva", "Create")
@@ -15,13 +15,13 @@
             @Html.DisplayNameFor(model => model.Maintenance)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            Fecha
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Round)
+            Hora
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserProfile.UserName)
+            Representante
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VehicleInfoModel.Year)
@@ -39,7 +39,16 @@
                 @item.Date.ToShortDateString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Round)
+                @*@Html.DisplayFor(modelItem => item.Round)*@
+                @{
+                    DateTime hora = new DateTime();
+                   
+                    
+                }
+                <text>
+                    @hora.AddHours(item.Round + 8).ToString("h:mm:ss tt")
+                    
+                </text>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserProfile.UserName)

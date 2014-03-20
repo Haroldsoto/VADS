@@ -429,6 +429,9 @@ label {
 label.checkbox {
     display: inline;
 }
+#display-label {
+    text-emphasis: #000000;
+}
 
 input, textarea {
     border: 1px solid #e2e2e2;
