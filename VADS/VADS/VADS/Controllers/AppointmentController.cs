@@ -9,6 +9,10 @@ using System.Web;
 using System.Web.Mvc;
 using VADS.Models;
 
+using Google.GData.Calendar;
+using Google.GData.Client;
+using Google.GData.Extensions;
+
 namespace VADS.Controllers
 {
     public class AppointmentController : Controller
@@ -159,10 +163,41 @@ namespace VADS.Controllers
             var selectedAppoint = db.Appointments.First(appointment => appointment.Id == appointmentId);
             selectedAppoint.VehicleId = vehicleinfomodel.VehicleId;
             selectedAppoint.Maintenance = maintenance;
-
-            db.Appointments.AddOrUpdate(selectedAppoint);
+            var name = vehicleinfomodel.OwnerModel.Name + " " + vehicleinfomodel.OwnerModel.LastName;
+            var fecha = selectedAppoint.Date;
+            AddCalendarEvent(maintenance, name, fecha);
+            db.Appointments.AddOrUpdate();
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult AddCalendarEvent(string titulo, string contenido, DateTime fecha)
+        {
+
+            CalendarService service = new CalendarService("VADS");
+            service.setUserCredentials("VADSproject@gmail.com", "123QWE!@#qwe");
+            EventEntry entry = new EventEntry();
+
+            // Set the title and content of the entry.
+            entry.Title.Text = titulo;
+            entry.Content.Content = contenido;
+
+            // Set a location for the event.
+            Where eventLocation = new Where();
+            eventLocation.ValueString = "Taller";
+            entry.Locations.Add(eventLocation);
+
+            When eventTime = new When(fecha, DateTime.Now);
+            entry.Times.Add(eventTime);
+
+            Uri postUri = new Uri("https://www.google.com/calendar/feeds/default/private/full");
+
+            // Send the request and receive the response:
+            AtomEntry insertedEntry = service.Insert(postUri, entry);
+
+            //insertedEntry.Title.Text = "COROOOO";
+            //insertedEntry.Update();
+            return RedirectToAction("Index", "home");
         }
     }
 }
