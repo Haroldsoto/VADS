@@ -18,8 +18,8 @@ namespace VADS.Controllers
 
         public ActionResult Index()
         {
-            db.TotoModels.Select(model => new SelectListItem()
-                                              {
+            db.TotoModels.Select(model => new SelectListItem
+            {
                                                   Value = model.TotoId.ToString(), Text = model.TotoName
                                               });
             return View(db.TotoModels.ToList());
@@ -43,8 +43,8 @@ namespace VADS.Controllers
 
         public ActionResult CreateToto(int totoId, string totoName)
         {
-            var Totomodel = new TotoModel()
-                                {
+            var Totomodel = new TotoModel
+            {
                                     TotoId = totoId,
                                     TotoName = totoName
                                 };
