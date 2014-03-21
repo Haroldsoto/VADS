@@ -98,7 +98,7 @@ namespace VADS.Controllers
                             "Combustible menor que: " + value.ToString()).Send();
                     break;
                 case "obdconnected":
-                    UserMailer.Connected(email, name, lastName, vehicleInfo).Send;
+                    UserMailer.Connected(email, name, lastName, vehicleInfo).Send();
                     break;
             }
             db.EventModels.Add(model);
