@@ -82,20 +82,20 @@ namespace VADS.Controllers
             switch (type)
             {
                 case "MPH_MAYOR":
-                    if (value > 50)
-                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite").Send();
+                    if (value >= 20)
+                        UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Millas por Hora mayor que:" + value.ToString()).Send();
                     break;
                 case "OIL_CHANGE":
                     UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite").Send();
                     break;
                 case "RPM_MAYOR":
-                    if (value > 2000)
+                    if (value >= 2000)
                         UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Revoluciones por minuto mayor que: " + value.ToString()).Send();
                     break;
                 case "FUEL_MENOR":
-                    if (value < 2000)
+                    if (value < 200)
                         UserMailer.Maintenance(email, name, lastName, vehicleInfo,
-                            "Combustible menor que: " + value.ToString()).Send();
+                            "Nivel de combustible: " + value.ToString()).Send();
                     break;
                 case "OBDConnected":
                     UserMailer.Connected(email, name, lastName, vehicleInfo).Send();
