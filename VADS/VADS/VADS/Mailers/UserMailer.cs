@@ -45,6 +45,20 @@ namespace VADS.Mailers
             });
         }
 
+        public virtual MvcMailMessage Connected(string clientMail, string clientName, string clientLastName, string vehicle)
+        {
+            ViewBag.Vehicle = vehicle;
+            ViewBag.Name = clientName;
+            ViewBag.LastName = clientLastName;
+            
+            return Populate(x =>
+            {
+                x.Subject = "VADS - Comunicación establecida.";
+                x.ViewName = "OBD Conectado";
+                x.To.Add(clientMail);
+            });
+        }
+
         public virtual MvcMailMessage PasswordReset()
         {
             //ViewBag.Data = someObject;

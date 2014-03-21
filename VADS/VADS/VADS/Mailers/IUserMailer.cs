@@ -7,6 +7,7 @@ namespace VADS.Mailers
     {
         MvcMailMessage Maintenance(string clientMail, string clientName, string clientLastName, string vehicle,
             string maintenance);
+        MvcMailMessage Connected(string clientMail, string clientName, string clientLastName, string vehicle);
 
         MvcMailMessage PasswordReset();
     }
