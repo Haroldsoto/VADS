@@ -39,7 +39,7 @@ namespace VADS.Mailers
                            "&maintenance=" + maintenance;
             return Populate(x =>
             {
-                x.Subject = maintenance + " Maintenance Required";
+                x.Subject = maintenance;
                 x.ViewName = "Maintenance";
                 x.To.Add(clientMail);
             });
@@ -54,7 +54,7 @@ namespace VADS.Mailers
             return Populate(x =>
             {
                 x.Subject = "VADS - Comunicación establecida.";
-                x.ViewName = "OBD Conectado";
+                x.ViewName = "Connected";
                 x.To.Add(clientMail);
             });
         }
