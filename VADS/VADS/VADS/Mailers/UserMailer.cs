@@ -58,6 +58,20 @@ namespace VADS.Mailers
                 x.To.Add(clientMail);
             });
         }
+        public virtual MvcMailMessage Alert(string message, string subject, string clientMail, string clientName, string clientLastName, string vehicle)
+        {
+            ViewBag.Vehicle = vehicle;
+            ViewBag.Name = clientName;
+            ViewBag.LastName = clientLastName;
+            ViewBag.Message = message;
+
+            return Populate(x =>
+            {
+                x.Subject = "VADS - " + subject;
+                x.ViewName = "Alert";
+                x.To.Add(clientMail);
+            });
+        }
 
         public virtual MvcMailMessage PasswordReset()
         {

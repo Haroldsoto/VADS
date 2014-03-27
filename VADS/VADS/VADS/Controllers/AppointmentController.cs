@@ -35,7 +35,7 @@ namespace VADS.Controllers
 
         public ActionResult Index()
         {
-            var appointments = db.Appointments.Include(a => a.UserProfile).Include(a => a.VehicleInfoModel);
+            var appointments = db.Appointments.Include(a => a.UserProfile).Include(a => a.VehicleInfoModel).OrderByDescending(appointment => appointment.Date);
             return View(appointments.Where(appointment => appointment.VehicleId == null).Take(10).ToList());
         }
 
@@ -187,7 +187,7 @@ namespace VADS.Controllers
             eventLocation.ValueString = "Taller";
             entry.Locations.Add(eventLocation);
 
-            When eventTime = new When(fecha, DateTime.Now);
+            When eventTime = new When(fecha, fecha.AddHours(1));
             entry.Times.Add(eventTime);
 
             Uri postUri = new Uri("https://www.google.com/calendar/feeds/default/private/full");

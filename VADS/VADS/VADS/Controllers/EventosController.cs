@@ -8,6 +8,7 @@ using VADS.Models;
 
 namespace VADS.Controllers
 {
+    [Authorize(Roles = "canEdit")]
     public class EventosController : Controller
     {
         private IUserMailer _userMailer = new UserMailer();
@@ -23,7 +24,7 @@ namespace VADS.Controllers
 
         public ActionResult Index()
         {
-            var eventmodels = db.EventModels.Include(e => e.VehicleInfo.VehicleModel.VehicleBrand).Include(e1 => e1.VehicleInfo.OwnerModel);
+            var eventmodels = db.EventModels.Include(e => e.VehicleInfo.VehicleModel.VehicleBrand).Include(e1 => e1.VehicleInfo.OwnerModel).OrderByDescending(model => model.EventID);
             return View(eventmodels.ToList());
         }
 
@@ -99,6 +100,9 @@ namespace VADS.Controllers
                     break;
                 case "OBDConnected":
                     UserMailer.Connected(email, name, lastName, vehicleInfo).Send();
+                    break;
+                case "VEHICLE_ON":
+                    UserMailer.Alert("ha sido encendido.", "Vehículo Encendido",email, name, lastName, vehicleInfo).Send();
                     break;
             }
             db.EventModels.Add(model);

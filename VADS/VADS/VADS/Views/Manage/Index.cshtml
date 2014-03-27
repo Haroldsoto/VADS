@@ -4,12 +4,22 @@
 
 <h2>Administrar</h2>
 
-<p>
-    @Html.ActionLink("Administrar vehículos", "Index", "Vehicle")
-</p>
-<p>
-    @Html.ActionLink("Administrar clientes", "Index", "Client")
-</p>
+<ul class="round" style="">
+    <li class="one">
+        @Html.ActionLink("Administrar clientes", "Index", "Client")
+        
+    </li>
+    <li class="two">
+        @Html.ActionLink("Administrar vehículos", "Index", "Vehicle")
+        
+    </li>
+    <li class="three">
+        @Html.ActionLink("Ver historial de eventos", "Index", "Eventos")
+    </li>
+           
+</ul>
+<h3>Calendario de mantenimientos</h3>
+<br />
 <div>
     <iframe src="https://www.google.com/calendar/embed?src=vadsproject%40gmail.com&ctz=America/Santo_Domingo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
