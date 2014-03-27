@@ -8,7 +8,7 @@ using VADS.Models;
 
 namespace VADS.Controllers
 {
-    [Authorize(Roles = "canEdit")]
+    // [Authorize(Roles = "canEdit")]
     public class EventosController : Controller
     {
         private IUserMailer _userMailer = new UserMailer();
