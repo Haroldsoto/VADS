@@ -25,7 +25,7 @@ namespace VADS.Controllers
             var owner = db.Invitations.FirstOrDefault(invitation1 => invitation1.Id == invitation).OwnerModel;
             ViewBag.ownerId = owner.Id;
             ViewBag.Maintenance = maintenance;
-            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).ToList();
+            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).OrderByDescending(appointment => appointment.Date).ToList();
             return View(appointments);
         }
 
@@ -159,19 +159,25 @@ namespace VADS.Controllers
         public ActionResult Seleccionar(int ownerId, Guid appointmentId, string maintenance)
         {
             var vehicleinfomodel = db.VehicleInfoModels.FirstOrDefault(model => model.OwnerId == ownerId);
+            
 
             var selectedAppoint = db.Appointments.First(appointment => appointment.Id == appointmentId);
             selectedAppoint.VehicleId = vehicleinfomodel.VehicleId;
             selectedAppoint.Maintenance = maintenance;
+            var attendantModel = db.UserProfiles.FirstOrDefault(model => model.UserId == selectedAppoint.AttendantId);
+            
+
             var name = vehicleinfomodel.OwnerModel.Name + " " + vehicleinfomodel.OwnerModel.LastName;
             var fecha = selectedAppoint.Date;
-            AddCalendarEvent(maintenance, name, fecha);
+            AddCalendarEvent(maintenance, name, fecha,
+                vehicleinfomodel.VehicleModel.VehicleBrand.Brand + " " + vehicleinfomodel.VehicleModel.Model + " " +
+                vehicleinfomodel.Year, attendantModel.NombreCompleto);
             db.Appointments.AddOrUpdate();
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult AddCalendarEvent(string titulo, string contenido, DateTime fecha)
+        public ActionResult AddCalendarEvent(string maintenance, string owner, DateTime fecha, string vehicle, string attendant)
         {
 
             CalendarService service = new CalendarService("VADS");
@@ -179,8 +185,8 @@ namespace VADS.Controllers
             EventEntry entry = new EventEntry();
 
             // Set the title and content of the entry.
-            entry.Title.Text = titulo;
-            entry.Content.Content = contenido;
+            entry.Title.Text = maintenance;
+            entry.Content.Content = "Vehículo: "+vehicle+"\nCliente: " + owner + "\nRepresentante: " + attendant;
 
             // Set a location for the event.
             Where eventLocation = new Where();
