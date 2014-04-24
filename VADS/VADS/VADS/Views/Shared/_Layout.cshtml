@@ -28,10 +28,10 @@
                             <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                             @*<li>@Html.ActionLink("Acerca de VADS", "About", "Home")</li>*@
                             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                            @*@if (ViewContext.HttpContext.User.IsInRole("canEdit"))
+                            @if (ViewContext.HttpContext.User.IsInRole("canEdit"))
                             {
                                 <li>@Html.ActionLink("Administrar", "Index", "Manage")</li>
-                            }*@
+                            }
                             
                         </ul>
                     </nav>
