@@ -7,14 +7,16 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
-        <meta name="description" content="The description of my page" />
+        @Styles.Render("~/Content/bootstrap")
+        @Scripts.Render("~/Scripts/bootstrap")
+        <meta name="description" content="VADS - Vehicle Automatic Diagnostics System" />
 </head>
     <body>
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
                     <a href="/" title="Volver a la pagina de inicio" id="logo">
-                        <img src="~/logo2.png" alt="VADS Logo"> 
+                        <img src="~/logo2.png" class="img-responsive"  alt="VADS Logo"> 
                     </a>
                 </div>
                 <div class="float-right">
@@ -26,7 +28,11 @@
                             <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                             @*<li>@Html.ActionLink("Acerca de VADS", "About", "Home")</li>*@
                             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Administrar", "Index", "Manage")</li>
+                            @if (ViewContext.HttpContext.User.IsInRole("canEdit"))
+                            {
+                                <li>@Html.ActionLink("Administrar", "Index", "Manage")</li>
+                            }
+                            
                         </ul>
                     </nav>
                 </div>

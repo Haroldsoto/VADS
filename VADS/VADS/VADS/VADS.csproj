@@ -251,6 +251,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -315,6 +319,7 @@
     <Content Include="logo2.png" />
     <Content Include="logoMail.png" />
     <Content Include="RecaptchaNet.ReadMe.txt" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\CascadingDDL.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />

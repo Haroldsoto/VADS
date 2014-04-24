@@ -4,22 +4,14 @@
 
 <h2>Administrar</h2>
 
-<ul class="round" style="">
-    <li class="one">
-        @Html.ActionLink("Administrar clientes", "Index", "Client")
-        
-    </li>
-    <li class="two">
-        @Html.ActionLink("Administrar vehículos", "Index", "Vehicle")
-        
-    </li>
-    <li class="three">
-        @Html.ActionLink("Ver historial de eventos", "Index", "Eventos")
-    </li>
-           
-</ul>
+<div class="btn-group btn-group-lg">
+    @Html.ActionLink("Administrar clientes", "Index", "Client", null ,new { @class="btn btn-default"})
+    @Html.ActionLink("Administrar vehículos", "Index", "Vehicle", null,  new { @class = "btn btn-default" })
+    @Html.ActionLink("Ver historial de eventos", "Index", "Eventos",null,  new { @class = "btn btn-default" })
+</div>
+
 <h3>Calendario de mantenimientos</h3>
-<br />
-<div>
-    <iframe src="https://www.google.com/calendar/embed?src=vadsproject%40gmail.com&ctz=America/Santo_Domingo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+<div class="text-center">
+    <iframe src="https://www.google.com/calendar/embed?src=vadsproject%40gmail.com&ctz=America/Santo_Domingo&hl=es" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
