@@ -24,7 +24,7 @@ namespace VADS.Controllers
     {
         //
         // GET: /Account/Login
-
+        private UsersContext db = new UsersContext();
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {

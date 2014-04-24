@@ -6,50 +6,75 @@
 
 <h2>Registrar cliente nuevo</h2>
 
+
+
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>OwnerModel</legend>
+    <div class="form-group">
+    <label>Nombre</label>
+    @Html.TextBoxFor(model => model.Name, new{@class = "form-control name", @placeholder = "Nombre" })
+        @Html.ValidationMessageFor(model => model.Name)
 
-        <div class="editor-label">
-            @Html.Label("Nombre")
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
+</div>
+<div class="form-group">
+    <label>Nombre</label>
+    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control name", @placeholder = "Apellido" })
+    @Html.ValidationMessageFor(model => model.LastName)
+</div>
+<div class="form-group">
+    <label>Email</label>
+    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", @type="email"})
+    @Html.ValidationMessageFor(model => model.Email)
+</div>
+<div class="form-group">
+    <label>Teléfono</label>
+    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Teléfono", @type = "phone" })
+    @Html.ValidationMessageFor(model => model.Phone)
+</div>
+<input class="btn btn-default" type="submit" value="Registrar" />
 
-        <div class="editor-label">
-            @Html.Label("Apellido")
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-        </div>
+        @*<fieldset>
+            <legend>OwnerModel</legend>
 
-        <div class="editor-label">
-            @Html.Label("Email")
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
+            <div class="editor-label">
+                @Html.Label("Nombre")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
 
-        <div class="editor-label">
-            @Html.Label("Teléfono")
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Phone)
-            @Html.ValidationMessageFor(model => model.Phone)
-        </div>
+            <div class="editor-label">
+                @Html.Label("Apellido")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
 
-        <p>
-            <input type="submit" value="Registrar" />
-        </p>
-    </fieldset>
-}
+            <div class="editor-label">
+                @Html.Label("Email")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+
+            <div class="editor-label">
+                @Html.Label("Teléfono")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+
+            <p>
+                <input type="submit" value="Registrar" />
+            </p>
+        </fieldset>*@
+    }
 
 <div>
     @Html.ActionLink("Atrás", "Index")

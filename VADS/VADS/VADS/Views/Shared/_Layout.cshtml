@@ -8,10 +8,11 @@
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
         @Styles.Render("~/Content/bootstrap")
-        @Scripts.Render("~/Scripts/bootstrap")
+        
         <meta name="description" content="VADS - Vehicle Automatic Diagnostics System" />
 </head>
     <body>
+        
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
@@ -41,6 +42,11 @@
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
+                <!-- <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Library</a></li>
+                    <li class="active">@Page</li>
+                </ol> -->
                 @RenderBody()
             </section>
         </div>
@@ -53,6 +59,7 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/Scripts/bootstrap")
         @RenderSection("scripts", required: false)
     </body>
 </html>

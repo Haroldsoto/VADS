@@ -45,7 +45,7 @@ namespace VADS.Controllers
         public ActionResult Existing()
         {
             var appointments = db.Appointments.Include(a => a.UserProfile).Include(a => a.VehicleInfoModel);
-            return View(appointments.Where(appointment => appointment.VehicleId != null).ToList());
+            return View(appointments.Where(appointment => appointment.VehicleId != null).OrderByDescending(appointment => appointment.Date).ToList());
         }
 
         //

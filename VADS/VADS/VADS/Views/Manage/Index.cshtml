@@ -5,9 +5,16 @@
 <h2>Administrar</h2>
 
 <div class="btn-group btn-group-lg">
-    @Html.ActionLink("Administrar clientes", "Index", "Client", null ,new { @class="btn btn-default"})
-    @Html.ActionLink("Administrar vehículos", "Index", "Vehicle", null,  new { @class = "btn btn-default" })
-    @Html.ActionLink("Ver historial de eventos", "Index", "Eventos",null,  new { @class = "btn btn-default" })
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Administrar <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li>@Html.ActionLink("Administrar clientes", "Index", "Client")</li>
+        <li>@Html.ActionLink("Administrar vehículos", "Index", "Vehicle")</li>
+    </ul>
+
+    @Html.ActionLink("Ver historial de eventos", "Index", "Eventos", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Ver mantenimientos pendientes", "Existing", "Appointment", null, new { @class = "btn btn-default" })
 </div>
 
 <h3>Calendario de mantenimientos</h3>
