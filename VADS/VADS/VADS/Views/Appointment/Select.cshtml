@@ -87,11 +87,11 @@
                 <h4 class="modal-title" id="myModalLabel">Has seleccionado un horario</h4>
             </div>
             <div class="modal-body">
-                <h3>Está segur@@ que deseas seleccionar este horario?</h3>
+                <h3>Está seguro(a) que deseas seleccionar este horario?</h3> <br/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <a id="elBotonDeVelda" class="btn btn-primary">Aceptar</a>
+                <a id="elBotonDeVelda" style="color:white;" class="btn btn-primary">Aceptar</a>
             </div>
         </div>
     </div>
@@ -104,11 +104,15 @@
             ownerId = ViewBag.ownerId,
             maintenance = ViewBag.maintenance
         })' + "&appointmentId=";
-        $(".elBoton").each(function(index, value) {
-            $(this).click(function() {
+        $(".elBoton").each(function (index, value) {
+            var self = $(this);
+            $(this).click(function () {
+                var fechaMant;
+                var horaMant;
                 var elSeleccionao = window.elLink + value.id;
                 $("#elBotonDeVelda").attr("href", elSeleccionao);
-                alert(elSeleccionao);
+                fechaMant = $("#elBotonDeVelda").attr("fecha", self.parent().parent().children().filter(':nth-child(2)').text().trim());
+                horaMant = $("#elBotonDeVelda").attr("hora", self.parent().parent().children().filter(':nth-child(3)').text().trim());
             });
         });        
 
