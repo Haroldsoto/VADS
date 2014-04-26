@@ -5,7 +5,9 @@
 }
 
 <h2>Editar cliente</h2>
-
+<ul class="pager">
+    <li class="previous"><a href="@Url.Action("Index", "Client")">&larr; Atrás</a></li>
+</ul>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -53,9 +55,6 @@
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Volver", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

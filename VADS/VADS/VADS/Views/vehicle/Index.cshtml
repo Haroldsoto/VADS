@@ -5,7 +5,9 @@
 }
 
 <h2>Vehículos</h2>
-
+<ul class="pager">
+    <li class="previous"><a href="@Url.Action("Index", "Manage")">&larr; Atrás</a></li>
+</ul>
 <p>
     @Html.ActionLink("Registrar un vehículo", "Create", null, new{@class="btn btn-default"})
 </p>

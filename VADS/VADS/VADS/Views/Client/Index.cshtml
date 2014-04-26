@@ -5,7 +5,9 @@
 }
 
 <h2>Clientes</h2>
-
+<ul class="pager">
+    <li class="previous"><a href="@Url.Action("Index", "Manage")">&larr; Atrás</a></li>
+</ul>
 <p>
     @Html.ActionLink("Registrar un nuevo cliente", "Create", null, new{@class="btn btn-default"})
 </p>

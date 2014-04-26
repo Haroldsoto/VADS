@@ -4,17 +4,27 @@
 
 <h2>Administrar</h2>
 
-<div class="btn-group btn-group-lg">
+<div class="btn-group btn-group-lg co">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
         Administrar <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-        <li>@Html.ActionLink("Administrar clientes", "Index", "Client")</li>
-        <li>@Html.ActionLink("Administrar vehículos", "Index", "Vehicle")</li>
+        <li>@Html.ActionLink("Clientes", "Index", "Client")</li>
+        <li>@Html.ActionLink("Vehículos", "Index", "Vehicle")</li>
     </ul>
+    
 
-    @Html.ActionLink("Ver historial de eventos", "Index", "Eventos", null, new { @class = "btn btn-default" })
-    @Html.ActionLink("Ver mantenimientos pendientes", "Existing", "Appointment", null, new { @class = "btn btn-default" })
+    @*@Html.ActionLink("Ver historial de eventos", "Index", "Eventos", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Ver mantenimientos pendientes", "Existing", "Appointment", null, new { @class = "btn btn-default" })*@
+</div>
+<div class="btn-group btn-group-lg navbar-btn">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Mostrar <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li>@Html.ActionLink("Historial de eventos", "Index", "Eventos")</li>
+        <li>@Html.ActionLink("Mantenimientos pendientes", "Existing", "Appointment")</li>
+    </ul>
 </div>
 
 <h3>Calendario de mantenimientos</h3>

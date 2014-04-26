@@ -8,7 +8,9 @@
 
 <h2>Añadir vehículo</h2>
 <br />
-
+<ul class="pager">
+    <li class="previous"><a href="@Url.Action("Index", "Vehicle")">&larr; Atrás</a></li>
+</ul>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -18,20 +20,41 @@
         <div>
             <label>Marca</label>
         </div>
-        <div>
-            @Html.DropDownList("BrandId", (IEnumerable<SelectListItem>)ViewBag.VehicleBrands, "Seleccione Una Marca")
+        <div class="form-group">
+            @Html.DropDownList("BrandId", (IEnumerable<SelectListItem>)ViewBag.VehicleBrands, "Seleccione Una Marca", new{@class="dropdown"})
         </div>
-        <p data-bind="visible: models().length > 0">
+        
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="#">
+                @foreach (var item in (IEnumerable<SelectListItem>)ViewBag.VehicleBrands)
+                {
+                    if (item.Selected == true)
+                    {
+                        @item.Text
+                    }
+                }
+                <i class="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul class="dropdown-menu">
+
+                @foreach (var item in (IEnumerable<SelectListItem>)ViewBag.VehicleBrands)
+                {
+                    <li><a href="@item.Value">@item.Text</a></li>
+
+                }
+
+            </ul>   
+            <p data-bind="visible: models().length > 0">
+                <div>
+                    <label>Modelo</label>
+                </div>
+                @Html.DropDownListFor(m => m.ModelId, Enumerable.Empty<SelectListItem>())
+            </p>
             <div>
-                <label>Modelo</label>
+                @Html.Label("Año")
             </div>
-            @Html.DropDownListFor(m => m.ModelId, Enumerable.Empty<SelectListItem>())
-        </p>
-        <div>
-            @Html.Label("Año")
-        </div>
-        <div>
-            @{
+            <div>
+                @{
     var years = Enumerable.Range(1996, DateTime.Now.Year - 1995)
        .ToList()
        .OrderByDescending(d => d)
@@ -40,31 +63,31 @@
            Text = e.ToStringInvariant(),
            Value = e.ToStringInvariant()
        });
-            }
-            @Html.DropDownListFor(model => model.Year, years, "-Seleccione uno-")
-            @Html.ValidationMessageFor(model => model.Year)
-        </div>
+                }
+                @Html.DropDownListFor(model => model.Year, years, "-Seleccione uno-")
+                @Html.ValidationMessageFor(model => model.Year)
+            </div>
 
-        <div>
-            @Html.Label("Placa")
-        </div>
-        <div>
-            @Html.EditorFor(model => model.Plate)
-            @Html.ValidationMessageFor(model => model.Plate)
-        </div>
+            <div>
+                @Html.Label("Placa")
+            </div>
+            <div>
+                @Html.EditorFor(model => model.Plate)
+                @Html.ValidationMessageFor(model => model.Plate)
+            </div>
 
-        <div>
-            @Html.Label("Dueño")
-        </div>
-        <div>
-            @Html.DropDownList("OwnerId", "-Seleccione uno-")
-            @Html.ValidationMessageFor(model => model.OwnerId)
-        </div>
+            <div>
+                @Html.Label("Dueño")
+            </div>
+            <div>
+                @Html.DropDownList("OwnerId", "-Seleccione uno-")
+                @Html.ValidationMessageFor(model => model.OwnerId)
+            </div>
 
-        <p>
-            <input type="submit" value="Crear" />
-        </p>
-    </fieldset>
+            <p>
+                <input class="btn btn-default" type="submit" value="Registrar Vehículo" />
+            </p>
+</fieldset>
 }
 
 <div>
