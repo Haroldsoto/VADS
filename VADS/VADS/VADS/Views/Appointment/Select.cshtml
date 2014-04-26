@@ -42,7 +42,7 @@
                 <td>
                     @*@Html.DisplayFor(modelItem => item.Round)*@
                     @{
-            DateTime hora = new DateTime();
+                    DateTime hora = new DateTime();
 
 
                     }
@@ -61,11 +61,57 @@
 
                 </td>
                 <td>
-                    @Html.ActionLink("Seleccionar Cita", "Seleccionar", "Appointment", new { ownerId = ViewBag.ownerId, appointmentId = item.Id, maintenance = ViewBag.maintenance, @class = "btn btn-default" }, null)
+                    <a id="@item.Id" class="elBoton" data-toggle="modal" data-target="#modalSelect">Click</a>
+                    @Html.ActionLink("Seleccionar Cita", "Seleccionar", "Appointment", new 
+                    {   
+                        ownerId = ViewBag.ownerId, 
+                        appointmentId = item.Id, 
+                        maintenance = ViewBag.maintenance, 
+                        @class = "btn btn-default", 
+                        @data_toggle="modal", 
+                        @data_target="#modalSelect"},  null)
                 </td>
             </tr>
         }
 
     </table>
 </div>
+
+
+
+<div class="modal fade" id="modalSelect" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myModalLabel">Has seleccionado un horario</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Está segur@@ que deseas seleccionar este horario?</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <a id="elBotonDeVelda" class="btn btn-primary">Aceptar</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        window.elLink = '@Url.Action("Seleccionar", "Appointment",
+        new
+        {
+            ownerId = ViewBag.ownerId,
+            maintenance = ViewBag.maintenance
+        })' + "&appointmentId=";
+        $(".elBoton").each(function(index, value) {
+            $(this).click(function() {
+                var elSeleccionao = window.elLink + value.id;
+                $("#elBotonDeVelda").attr("href", elSeleccionao);
+                alert(elSeleccionao);
+            });
+        });        
+
+    </script>
+}
 

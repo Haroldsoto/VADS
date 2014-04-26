@@ -9,51 +9,54 @@
 <p>
     @Html.ActionLink("Crear evento", "Create")
 </p>
-<table class="table table-striped table-hover">
-    <tr>
-        <th>
-            Valor
-        </th>
-        <th>
-            Tipo de evento
-        </th>
-        <th>
-            Fecha y hora
-        </th>
-        <th>
-            Vehículo
-        </th>
-        <th>
-            Dueño
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Value)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleInfo.VehicleModel.VehicleBrand.Brand)
-            @Html.DisplayFor(modelItem => item.VehicleInfo.VehicleModel.Model)
-            @Html.DisplayFor(modelItem => item.VehicleInfo.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleInfo.OwnerModel.Name)
-            @Html.DisplayFor(modelItem => item.VehicleInfo.OwnerModel.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.EventID }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.EventID })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Valor
+            </th>
+            <th>
+                Tipo de evento
+            </th>
+            <th>
+                Fecha y hora
+            </th>
+            <th>
+                Vehículo
+            </th>
+            <th>
+                Dueño
+            </th>
+            <th></th>
+        </tr>
+        <div id="pagination">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.VehicleModel.VehicleBrand.Brand)
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.VehicleModel.Model)
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.OwnerModel.Name)
+                    @Html.DisplayFor(modelItem => item.VehicleInfo.OwnerModel.LastName)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.EventID }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.EventID })
+                </td>
+            </tr>
+        }
+            </div>
+    </table>
+</div>
