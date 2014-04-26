@@ -61,8 +61,8 @@
 
                 </td>
                 <td>
-                    <a id="@item.Id" class="elBoton" data-toggle="modal" data-target="#modalSelect">Click</a>
-                    @Html.ActionLink("Seleccionar Cita", "Seleccionar", "Appointment", new 
+                    <a id="@item.Id" class="elBoton btn btn-success" data-toggle="modal" data-target="#modalSelect">Seleccionar cita</a>
+                    @*@Html.ActionLink("Seleccionar Cita", "Seleccionar", "Appointment", new 
                     {   
                         ownerId = ViewBag.ownerId, 
                         appointmentId = item.Id, 
@@ -70,7 +70,7 @@
                         @class = "btn btn-default", 
                         @data_toggle="modal", 
                         @data_target="#modalSelect"},  null)
-                </td>
+                </td>*@
             </tr>
         }
 
