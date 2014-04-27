@@ -192,7 +192,7 @@ namespace VADS.Controllers
             eventLocation.ValueString = "Taller";
             entry.Locations.Add(eventLocation);
 
-            When eventTime = new When(fecha, fecha.AddHours(1));
+            When eventTime = new When(fecha.AddHours(4), fecha.AddHours(5));
             entry.Times.Add(eventTime);
 
             Uri postUri = new Uri("https://www.google.com/calendar/feeds/default/private/full");
