@@ -180,7 +180,7 @@ namespace VADS.Controllers
         {
 
             CalendarService service = new CalendarService("VADS");
-            service.setUserCredentials("VADSproject@gmail.com", "123QWE!@#qwe");
+            service.setUserCredentials("VADSproject@gmail.com", "vadsproject123");
             EventEntry entry = new EventEntry();
 
             // Set the title and content of the entry.
