@@ -22,10 +22,11 @@ namespace VADS.Controllers
 
         public ActionResult Select(Guid invitation, string maintenance)
         {
-            var owner = db.Invitations.FirstOrDefault(invitation1 => invitation1.Id == invitation);
+            var owner = db.Invitations.FirstOrDefault(invitation1 => invitation1.Id == invitation).OwnerModel;
+            ViewBag.Nombre = owner.Name + " " + owner.LastName;
             ViewBag.ownerId = owner.Id;
             ViewBag.Maintenance = maintenance;
-            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).OrderByDescending(appointment => appointment.Date).Take(20).ToList();
+            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).Take(20).ToList();
             return View(appointments);
         }
 
@@ -36,7 +37,7 @@ namespace VADS.Controllers
         public ActionResult Index()
         {
             var appointments = db.Appointments.Include(a => a.UserProfile).Include(a => a.VehicleInfoModel).OrderByDescending(appointment => appointment.Date);
-            return View(appointments.Where(appointment => appointment.VehicleId == null).Take(10).ToList());
+            return View(appointments.Where(appointment => appointment.VehicleId == null).Take(20).ToList());
         }
 
         //
@@ -156,23 +157,21 @@ namespace VADS.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Seleccionar(int ownerId, Guid appointmentId, string maintenance)
+        public ActionResult Seleccionar(int ownerId, string maintenance, Guid appointmentId)
         {
             var vehicleinfomodel = db.VehicleInfoModels.FirstOrDefault(model => model.OwnerId == ownerId);
-            
 
             var selectedAppoint = db.Appointments.First(appointment => appointment.Id == appointmentId);
             selectedAppoint.VehicleId = vehicleinfomodel.VehicleId;
             selectedAppoint.Maintenance = maintenance;
             var attendantModel = db.UserProfiles.FirstOrDefault(model => model.UserId == selectedAppoint.AttendantId);
-            
 
             var name = vehicleinfomodel.OwnerModel.Name + " " + vehicleinfomodel.OwnerModel.LastName;
-            var fecha = selectedAppoint.Date;
+            var fecha = selectedAppoint.Date.AddHours(8+selectedAppoint.Round);
             AddCalendarEvent(maintenance, name, fecha,
                 vehicleinfomodel.VehicleModel.VehicleBrand.Brand + " " + vehicleinfomodel.VehicleModel.Model + " " +
                 vehicleinfomodel.Year, attendantModel.NombreCompleto);
-            db.Appointments.AddOrUpdate();
+            db.Appointments.AddOrUpdate(selectedAppoint);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
