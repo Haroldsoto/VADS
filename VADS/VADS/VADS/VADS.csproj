@@ -317,6 +317,9 @@
     <None Include="Properties\PublishProfiles\vads.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="icon.png" />
+    <Content Include="Images\car.png" />
+    <Content Include="Images\clouds150x202.png" />
+    <Content Include="Images\linkUp.png" />
     <Content Include="logo.png" />
     <Content Include="logo2.png" />
     <Content Include="logoMail.png" />

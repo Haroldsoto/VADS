@@ -17,41 +17,31 @@
 
         @Html.HiddenFor(model => model.Id)
 
-        <div class="editor-label">
-            Nombre
-        </div>
+        <label>Nombre</label>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { @class = "form-control name", @placeholder = "Nombre" })
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
-        <div class="editor-label">
-            Apellido(s)
-        </div>
+        <label>Apellido(s)</label>
         <div class="editor-field">
             @Html.EditorFor(model => model.LastName)
             @Html.ValidationMessageFor(model => model.LastName)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
+        <label>Email</label>
         <div class="editor-field">
             @Html.EditorFor(model => model.Email)
             @Html.ValidationMessageFor(model => model.Email)
         </div>
 
-        <div class="editor-label">
-            Teléfono
-        </div>
+        <label>Teléfono</label>
         <div class="editor-field">
             @Html.EditorFor(model => model.Phone)
             @Html.ValidationMessageFor(model => model.Phone)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <input class="btn btn-default" type="submit" value="Guardar" />
     </fieldset>
 }
 
