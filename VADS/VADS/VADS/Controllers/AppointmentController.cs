@@ -22,7 +22,7 @@ namespace VADS.Controllers
 
         public ActionResult Select(Guid invitation, string maintenance)
         {
-            var owner = db.Invitations.FirstOrDefault(invitation1 => invitation1.Id == invitation).OwnerModel;
+            var owner = db.Invitations.FirstOrDefault(invitation1 => invitation1.Id == invitation);
             ViewBag.ownerId = owner.Id;
             ViewBag.Maintenance = maintenance;
             var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).OrderByDescending(appointment => appointment.Date).Take(20).ToList();

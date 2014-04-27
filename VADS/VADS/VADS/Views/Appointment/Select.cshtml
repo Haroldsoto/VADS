@@ -88,6 +88,9 @@
             </div>
             <div class="modal-body">
                 <h3>Está seguro(a) que deseas seleccionar este horario?</h3> <br/>
+                <h1 id="fechaM"></h1><br />
+                <h1 id="horaM"></h1><br />
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -111,8 +114,8 @@
                 var horaMant;
                 var elSeleccionao = window.elLink + value.id;
                 $("#elBotonDeVelda").attr("href", elSeleccionao);
-                fechaMant = $("#elBotonDeVelda").attr("fecha", self.parent().parent().children().filter(':nth-child(2)').text().trim());
-                horaMant = $("#elBotonDeVelda").attr("hora", self.parent().parent().children().filter(':nth-child(3)').text().trim());
+                $(".fechaM").html = $("#elBotonDeVelda").attr("fecha", self.parent().parent().children().filter(':nth-child(2)').text().trim());
+                $(".horaM").html = $("#elBotonDeVelda").attr("hora", self.parent().parent().children().filter(':nth-child(3)').text().trim());
             });
         });        
 
