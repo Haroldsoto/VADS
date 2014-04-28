@@ -22,5 +22,12 @@ namespace VADS.Controllers
         {
             return View();
         }
+
+        public ActionResult Success(bool q, string name)
+        {
+            ViewBag.q = q;
+            ViewBag.Name = name;
+            return View();
+        }
     }
 }

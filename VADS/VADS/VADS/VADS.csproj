@@ -439,6 +439,7 @@
     <Content Include="Views\Eventos\Delete.cshtml" />
     <Content Include="Views\UserMailer\Connected.cshtml" />
     <Content Include="Views\UserMailer\Alert.cshtml" />
+    <Content Include="Views\Home\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

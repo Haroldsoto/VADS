@@ -173,7 +173,7 @@ namespace VADS.Controllers
                 vehicleinfomodel.Year, attendantModel.NombreCompleto);
             db.Appointments.AddOrUpdate(selectedAppoint);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Success", "Home", new {q = true, name = name});
         }
 
         public ActionResult AddCalendarEvent(string maintenance, string owner, DateTime fecha, string vehicle, string attendant)

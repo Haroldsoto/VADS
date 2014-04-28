@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Activities.Statements
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -20,23 +21,26 @@
                         <img src="~/logo2.png" class="img-responsive"  alt="VADS Logo"> 
                     </a>
                 </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            @*<li>@Html.ActionLink("Acerca de VADS", "About", "Home")</li>*@
-                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                            @if (ViewContext.HttpContext.User.IsInRole("canEdit"))
-                            {
-                                <li>@Html.ActionLink("Administrar", "Index", "Manage")</li>
-                            }
+@if (ViewBag.q != true) {
+    <div class="float-right">
+        <section id="login">
+                        
+            @Html.Partial("_LoginPartial")
+                        
+                        
+        </section>
+        <nav>
+            <ul id="menu">
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("Acerca de VADS", "About", "Home")</li>*@
+                <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                @*@if (ViewContext.HttpContext.User.IsInRole("canEdit"))*@
                             
-                        </ul>
-                    </nav>
-                </div>
+                <li>@Html.ActionLink("Administrar", "Index", "Manage")</li>
+            </ul>
+        </nav>
+    </div>
+}
             </div>
         </header>
         <div id="body">

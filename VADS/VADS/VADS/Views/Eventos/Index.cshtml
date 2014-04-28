@@ -31,7 +31,6 @@
             <th>
                 Dueño
             </th>
-            <th></th>
         </tr>
         <div id="pagination">
         @foreach (var item in Model)
@@ -55,10 +54,10 @@
                     @Html.DisplayFor(modelItem => item.VehicleInfo.OwnerModel.Name)
                     @Html.DisplayFor(modelItem => item.VehicleInfo.OwnerModel.LastName)
                 </td>
-                <td>
+                @*<td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.EventID }) |
                     @Html.ActionLink("Eliminar", "Delete", new { id = item.EventID })
-                </td>
+                </td>*@
             </tr>
         }
             </div>
