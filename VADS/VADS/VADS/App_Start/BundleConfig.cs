@@ -22,7 +22,7 @@ namespace VADS
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
+            bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css", "~/Content/bootstrap.min.css", "~/Content/bootstrap-theme.css", "~/Content/bootstrap-theme.min.css"));

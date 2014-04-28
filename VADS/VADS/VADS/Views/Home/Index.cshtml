@@ -19,9 +19,40 @@
     </section>
 }*@
 @*<h3>Vehicle Automatic Diagnostics System</h3>    <----  BREVE DESCRIPCION DEL PROYECTO *@
-<ol class="round">                                   
+
+@section scripts{
+<script src="~/Scripts/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+}
+
+
+<div class="row">
+    <div class="col-md-6 wow slideInLeft">
+        <h3>¿Qué es <abbr title="Vehicle Automatic Diagnostics System" class="initialism">VADS</abbr>?</h3>       @* <----  UN FEATURE DEL PROYECTO BREVE DEL PROYECTO *@
+        <div style="text-align: justify">
+            Se trata de un dispositivo el cual los Dealers de carros pueden instalar en
+            los vehículos nuevos para que se encargue de todo el proceso de mantenimiento
+            automáticamente de tal manera que si el vehículo le toca la cita de los 20,000 KMs
+            automáticamente genera una alarma la cual trata de coordinar la cita del mantenimiento
+            y una vez llega el día de la cita eficientizar todo el proceso de la misma.
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img class="wow slideInRight" id="carIcon" src="~/Images/car.png" />
+        <img class="wow slideInRight" id="linkUp" data-wow-delay="0.4s" src="~/Images/linkUp.png" />
+        <img class="wow slideInRight" id="clouds" data-wow-delay="0.8s" src="~/Images/clouds150x111.png" />
+        <img class="wow slideInRight" id="linkDown" data-wow-delay="1s" src="~/Images/linkDown.png" />
+        @*<di v id="carIcon" class="wow slideInRight">
+            
+        </div>*@
+    </div>
+</div>
+
+@*<ol class="round">                                   
     <li class="one">
-        <h3>¿Qué es VADS?</h3>       @* <----  UN FEATURE DEL PROYECTO BREVE DEL PROYECTO *@ 
+        <h3>¿Qué es VADS?</h3>    
         <div style="text-align: justify">
             Se trata de un dispositivo el cual los Dealers de carros pueden instalar en 
             los vehículos nuevos para que se encargue de todo el proceso de mantenimiento 
@@ -32,11 +63,11 @@
         
     </li>
 
-    <li class="two">                   @* <----  UN FEATURE DEL PROYECTO BREVE DEL PROYECTO *@ 
+    <li class="two">        
         <div style="text-align: justify">
         El sistema también tiene la capacidad de generar todo tipo de alarma que se pueda generar 
         con la información obtenida directamente de la computadora del carro a través de una interfaz 
         de diagnostico.
         </div>
     </li>
-</ol>
+</ol>*@

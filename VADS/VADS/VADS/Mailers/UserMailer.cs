@@ -45,6 +45,23 @@ namespace VADS.Mailers
             });
         }
 
+        public virtual MvcMailMessage Success(string clientMail, string clientName, string vehicle, string maintenance, string hora, string fecha, string representante)
+        {
+            ViewBag.Vehicle = vehicle;
+            ViewBag.Name = clientName;
+            ViewBag.Hora = hora;
+            ViewBag.Fecha = fecha;
+            ViewBag.Representante = representante;
+            ViewBag.Mantenimiento = maintenance;
+
+            return Populate(x =>
+            {
+                x.Subject = "VADS - Detalle de cita";
+                x.ViewName = "Success";
+                x.To.Add(clientMail);
+            });
+        }
+
         public virtual MvcMailMessage Connected(string clientMail, string clientName, string clientLastName, string vehicle)
         {
             ViewBag.Vehicle = vehicle;

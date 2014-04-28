@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Web;
 using System.Web.Mvc;
+using VADS.Mailers;
 using VADS.Models;
 
 using Google.GData.Calendar;
@@ -18,7 +19,13 @@ namespace VADS.Controllers
     public class AppointmentController : Controller
     {
         private UsersContext db = new UsersContext();
-
+        private IUserMailer _userMailer = new UserMailer();
+        
+        public IUserMailer UserMailer
+        {
+            get { return _userMailer; }
+            set { _userMailer = value; }
+        }
 
         public ActionResult Select(Guid invitation, string maintenance)
         {
@@ -168,11 +175,20 @@ namespace VADS.Controllers
 
             var name = vehicleinfomodel.OwnerModel.Name + " " + vehicleinfomodel.OwnerModel.LastName;
             var fecha = selectedAppoint.Date.AddHours(8+selectedAppoint.Round);
+            /* Variables mail */
+            var hora = fecha.ToShortTimeString();
+            var fechaMail = fecha.ToShortDateString();
+            var representante = attendantModel.NombreCompleto;
+            var mail = vehicleinfomodel.OwnerModel.Email;
+            var vehiculo = vehicleinfomodel.VehicleModel.VehicleBrand.Brand + " " + vehicleinfomodel.VehicleModel.Model +
+                          " " +
+                          vehicleinfomodel.Year;
             AddCalendarEvent(maintenance, name, fecha,
                 vehicleinfomodel.VehicleModel.VehicleBrand.Brand + " " + vehicleinfomodel.VehicleModel.Model + " " +
                 vehicleinfomodel.Year, attendantModel.NombreCompleto);
             db.Appointments.AddOrUpdate(selectedAppoint);
             db.SaveChanges();
+            UserMailer.Success(mail, name, vehiculo, maintenance, hora, fechaMail, representante).Send();
             return RedirectToAction("Success", "Home", new {q = true, name = name});
         }
 

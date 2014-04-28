@@ -1,0 +1,14 @@
+﻿@using System.Web.UI.WebControls
+@using Mvc.Mailer
+Hola @ViewBag.Name,
+<br />
+<br />
+Has recibido este correo porque has registrado una cita para un mantenimiento. Aqu&iacute; los detalles:
+<br />
+<ul class="list-group">
+    <li class="list-group-item">Mantenimiento: <strong>@ViewBag.Mantenimiento</strong></li>
+    <li class="list-group-item">Fecha: <strong>@ViewBag.Fecha</strong></li>
+    <li class="list-group-item">Hora: <strong>@ViewBag.Hora</strong></li>
+    <li class="list-group-item">Representante que te asistir&aacute;: <strong>@ViewBag.Representante</strong></li>
+</ul>
+<br />
