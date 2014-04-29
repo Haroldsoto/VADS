@@ -31,7 +31,6 @@
             <th>
                 @Html.DisplayName("Nombre del cliente")
             </th>
-            <th></th>
         </tr>
 
         @foreach (var item in Model)
@@ -54,6 +53,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OwnerModel.Name)
+                    @Html.DisplayFor(modelItem => item.OwnerModel.LastName)
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.VehicleId }) |
@@ -63,8 +63,5 @@
         }
 
     </table>
-</div class="table-responsive">>
-<br />
-<div>
-    @Html.ActionLink("Volver al panel de administración", "Index", "Manage")
 </div>
+<br />
