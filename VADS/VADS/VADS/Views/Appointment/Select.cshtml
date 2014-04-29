@@ -11,63 +11,68 @@
         Hola <strong>@ViewBag.Nombre</strong>!
     </h3>
     <h4>Elige un horario para tu cita con el taller.</h4>
-    <h5><strong>Mantenimiento: </strong>@ViewBag.maintenance</h5>
+    <h5><strong>Mantenimiento: </strong><h4>@ViewBag.maintenance</h4></h5>
 </div>
+<hr/>
 <div class="table-responsive">
-    <table class="table table-striped table-hover table-condensed">
-        <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Maintenance)
-            </th>*@
-            <th>
-                Fecha
-            </th>
-            <th>
-                Hora
-            </th>
-            <th>
-                Representante
-            </th>
-            @*<th>
-                Vehículo
-            </th>*@
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <table id="tablaCitas" class="table table-striped table-hover table-condensed">
+        <thead>
             <tr>
-                @*<td>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Maintenance)
+                </th>*@
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Hora
+                </th>
+                <th>
+                    Representante
+                </th>
+                @*<th>
+                    Vehículo
+                </th>*@
+                <th></th>
+            </tr>
+        </thead><tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
                     @Html.DisplayFor(modelItem => item.Maintenance)
                 </td>*@
-                <td>
-                    @item.Date.ToShortDateString()
-                </td>
-                <td>
-                    @item.Date.AddHours(item.Round + 8).ToString("h:mm:ss tt")
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserProfile.NombreCompleto)
-                </td>
-                @*<td>
+            <td>
+                @item.Date.ToShortDateString()
+            </td>
+            <td>
+                @item.Date.AddHours(item.Round + 8).ToString("h:mm:ss tt")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserProfile.NombreCompleto)
+            </td>
+            @*<td>
                     @Html.DisplayFor(modelItem => item.VehicleInfoModel.VehicleModel.VehicleBrand.Brand)
                     @Html.DisplayFor(modelItem => item.VehicleInfoModel.VehicleModel.Model)
                     @Html.DisplayFor(modelItem => item.VehicleInfoModel.Year)
 
                 </td>*@
-                <td>
-                    <a id="@item.Id" class="elBoton btn btn-success" data-toggle="modal" data-target="#modalSelect">Seleccionar cita</a>
-                    @*@Html.ActionLink("Seleccionar Cita", "Seleccionar", "Appointment", new 
-                    {   
-                        ownerId = ViewBag.ownerId, 
-                        appointmentId = item.Id, 
-                        maintenance = ViewBag.maintenance, 
-                        @class = "btn btn-default", 
-                        @data_toggle="modal", 
-                        @data_target="#modalSelect"},  null)
-                </td>*@
-            </tr>
-        }
+            <td>
+                <a id="@item.Id" class="elBoton btn btn-success" data-toggle="modal" data-target="#modalSelect">Seleccionar cita</a>
+                @*@Html.ActionLink("Seleccionar Cita", "Seleccionar", "Appointment", new
+                        {
+                            ownerId = ViewBag.ownerId,
+                            appointmentId = item.Id,
+                            maintenance = ViewBag.maintenance,
+                            @class = "btn btn-default",
+                            @data_toggle="modal",
+                            @data_target="#modalSelect"},  null)
+                    </td>*@
+        </tr>
+    }
+</tbody>
+
+
 
     </table>
 </div>
@@ -95,6 +100,39 @@
     </div>
 </div>
 @section scripts{
+    <script src="//datatables.net/download/build/nightly/jquery.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">
+<script>
+    $(document).ready(function () {
+        $('#tablaCitas').dataTable({
+            "oLanguage": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
+    });
+</script>
+
     <script>
         var elLink = '/Appointment/Seleccionar?ownerId='+@ViewBag.ownerId+'&maintenance='+'@Uri.EscapeDataString(@ViewBag.maintenance)' + '&appointmentId=';
         $(".elBoton").each(function (index, value) {

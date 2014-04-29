@@ -22,6 +22,10 @@ namespace VADS
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryDT").Include(
+                        "~/Scripts/jquery-DT-pagination.js", "~/Scripts/jquery.dataTables.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
