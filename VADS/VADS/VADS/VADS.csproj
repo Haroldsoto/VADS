@@ -325,6 +325,7 @@
     <Content Include="Images\car.png" />
     <Content Include="Images\clouds150x111.png" />
     <Content Include="Images\clouds150x202.png" />
+    <Content Include="Images\garage.png" />
     <Content Include="Images\linkDown.png" />
     <Content Include="Images\linkUp.png" />
     <Content Include="logo.png" />
