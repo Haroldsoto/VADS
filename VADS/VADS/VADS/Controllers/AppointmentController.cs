@@ -33,7 +33,7 @@ namespace VADS.Controllers
             ViewBag.Nombre = owner.Name + " " + owner.LastName;
             ViewBag.ownerId = owner.Id;
             ViewBag.Maintenance = maintenance;
-            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).ToList();
+            var appointments = db.Appointments.Where(appointment => appointment.VehicleId == null).Take(50).ToList();
             return View(appointments);
         }
 
@@ -44,7 +44,7 @@ namespace VADS.Controllers
         public ActionResult Index()
         {
             var appointments = db.Appointments.Include(a => a.UserProfile).Include(a => a.VehicleInfoModel).OrderByDescending(appointment => appointment.Date);
-            return View(appointments.Where(appointment => appointment.VehicleId == null).ToList());
+            return View(appointments.Where(appointment => appointment.VehicleId == null).Take(50).ToList());
         }
 
         //
