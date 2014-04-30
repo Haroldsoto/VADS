@@ -89,7 +89,7 @@ namespace VADS.Controllers
                     UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Distancia recorrida mayor que:" + value.ToString() + " Km").Send();
                     break;
                 case "TEMP_NORMAL":
-                    UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Temperatura mayor que:" + value.ToString() + " Km").Send();
+                    UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Temperatura normal, menor que:" + value.ToString() + " °C").Send();
                     break;
                 case "OIL_CHANGE":
                     UserMailer.Maintenance(email, name, lastName, vehicleInfo, "Cambio de aceite").Send();
